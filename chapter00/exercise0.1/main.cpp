@@ -1,28 +1,28 @@
-
-
 /******************************************************************************
- * Project        AcceleratedCPP
- * (c) copyright  2014
- * Company        Home
+ *       Project: AcceleratedCPP
+ * (c) Copyright: 2014
+ *       Company: Home
  *                All rights reserved
- * Secrecy Level  PUBLIC
+ * Secrecy Level: PUBLIC
  *****************************************************************************/
 
 /**
  *    @file       main.cpp
- *    @dir        D:\Projects\C++\AcceleratedCPP\chapter00\exercise0.1
  *    @author     VShilenkov
- *    @date       2014/12/22
- *    @time       17:17:13
- *    @brief      Упражнение 0.1. Страница 27.
- *
- *    Эффективное программирование на C++.
- *    Практическое программирование на примерах.
- *    Эндрю Кёниг, Барбара Му. 2002.
- *
+ *    @brief      Параграф 00. Упражнение 02. Страница 027.
+ *    
  *    Скомпилируйте и выполните программу, которая выводит текст "Привет, мир!".
- *
+ *    
+ *    @see        Эффективное программирование на C++.
+ *    @see        Практическое программирование на примерах.
+ *    @see        Эндрю Кёниг, Барбара Му. 2002.
  */
+ 
+ /**
+  *   Version history:
+  *
+  *   2014-12-23   0.1.0   VShilenkov   Initial
+  */
 
 #include <iostream>
 
