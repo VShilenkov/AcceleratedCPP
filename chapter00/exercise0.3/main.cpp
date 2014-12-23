@@ -20,11 +20,11 @@
  *    @see        Эндрю Кёниг, Барбара Му. 2002.
  */
  
- /**
-  *   Version history:
-  *
-  *   2014-12-23   0.1.0   VShilenkov   Initial
-  */
+/**
+ *   Version history:
+ *
+ *   2014-12-23   0.1.0   VShilenkov   Initial
+ */
 
 #include <iostream>
 
