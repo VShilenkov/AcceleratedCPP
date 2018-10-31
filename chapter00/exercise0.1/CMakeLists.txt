@@ -1,0 +1,1 @@
+add_executable(c00_e01 main.cpp)
