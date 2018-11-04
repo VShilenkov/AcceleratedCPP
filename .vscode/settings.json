@@ -11,5 +11,7 @@
 
     "cmake.configureOnOpen": true,
     
+    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }

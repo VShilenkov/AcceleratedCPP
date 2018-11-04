@@ -10,14 +10,14 @@
  *    @file       main.cpp
  *    @author     VShilenkov
  *    @brief      Параграф 00. Упражнение 01. Страница 027.
- *    
+ *
  *    Скомпилируйте и выполните программу, которая выводит текст "Привет, мир!".
- *    
+ *
  *    @see        Эффективное программирование на C++.
  *    @see        Практическое программирование на примерах.
  *    @see        Эндрю Кёниг, Барбара Му. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -26,11 +26,11 @@
 
 #include <iostream>
 
-int main()
+int main( )
 {
-   setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");
 
-   std::cout << "Привет, мир!";
+    std::cout << "Привет, мир!";
 
-   return 0;
+    return 0;
 }
