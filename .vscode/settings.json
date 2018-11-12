@@ -2,6 +2,7 @@
     "editor.mouseWheelZoom": true,
     "editor.renderWhitespace": "all",
     "editor.rulers": [80, 120, 160],
+    "editor.emptySelectionClipboard": false,
     
     "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
 
