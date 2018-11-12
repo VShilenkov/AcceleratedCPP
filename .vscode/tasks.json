@@ -23,7 +23,7 @@
             "echo": true,
             "focus": false,
             "showReuseMessage": false
-        },
+        }
     },
     "tasks": [
         // ----------------------------------------------------------------- Aux
@@ -95,7 +95,8 @@
                 "cmake.generate.gcc.debug",
                 "cmake.generate.gcc.release" //,
                 //"cmake.generate.vs"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.generate.all
         // --------------------------------------------------------------- Build
         {
@@ -126,7 +127,7 @@
                         "code": 1
                     },
                     {
-                        "regexp": "^\\s*\\^\\s*$"
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
                     }
                 ]
             }
@@ -159,7 +160,7 @@
                         "code": 1
                     },
                     {
-                        "regexp": "^\\s*\\^\\s*$"
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
                     }
                 ]
             }
@@ -192,7 +193,7 @@
                         "code": 1
                     },
                     {
-                        "regexp": "^\\s*\\^\\s*$"
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
                     }
                 ]
             }
@@ -225,7 +226,7 @@
                         "code": 1
                     },
                     {
-                        "regexp": "^\\s*\\^\\s*$"
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
                     }
                 ]
             }
@@ -237,7 +238,8 @@
                 "cmake.build.clang.release",
                 "cmake.build.gcc.debug",
                 "cmake.build.gcc.release"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.build.all
         // --------------------------------------------------------------- Clean
         {
@@ -248,7 +250,8 @@
                 ".\\build\\clang\\debug",
                 "--target",
                 "clean"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.clean.clang.debug
         {
             "label": "cmake.clean.clang.release",
@@ -258,7 +261,8 @@
                 ".\\build\\clang\\release",
                 "--target",
                 "clean"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.clean.clang.release
         {
             "label": "cmake.clean.gcc.debug",
@@ -268,7 +272,8 @@
                 ".\\build\\gcc\\debug",
                 "--target",
                 "clean"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.clean.gcc.debug
         {
             "label": "cmake.clean.gcc.release",
@@ -278,16 +283,53 @@
                 ".\\build\\gcc\\release",
                 "--target",
                 "clean"
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.clean.gcc.release
         {
             "label": "shell.clean.all",
             "command": "Remove-Item",
             "args": [
                 "-recurse",
-                ".\\build"
-            ]
-        },
+                ".\\build",
+                "-ErrorAction",
+                "SilentlyContinue"
+            ],
+            "problemMatcher": []
+        }, // shell.clean.all
+        // -------------------------------------------------------------- Rebuid
+        {
+            "label": "cmake.rebuild.clang.debug",
+            "dependsOn":[
+                "cmake.clean.clang.debug",
+                "cmake.build.clang.debug"
+            ],
+            "problemMatcher": []
+        }, // cmake.rebuild.clang.debug
+        {
+            "label": "cmake.rebuild.clang.release",
+            "dependsOn":[
+                "cmake.clean.clang.release",
+                "cmake.build.clang.release"
+            ],
+            "problemMatcher": []
+        }, // cmake.rebuild.clang.release
+        {
+            "label": "cmake.rebuild.gcc.debug",
+            "dependsOn":[
+                "cmake.clean.gcc.debug",
+                "cmake.build.gcc.debug"
+            ],
+            "problemMatcher": []
+        }, // cmake.rebuild.gcc.debug
+        {
+            "label": "cmake.rebuild.gcc.release",
+            "dependsOn":[
+                "cmake.clean.gcc.release",
+                "cmake.build.gcc.release"
+            ],
+            "problemMatcher": []
+        }, // cmake.rebuild.gcc.release
         // ------------------------------------------------------------- Execute
         {
             "label": "shell.exe.clang.debug",
@@ -295,7 +337,7 @@
             "options": {
                 "cwd": "${fileDirname}\\build\\clang\\debug\\"
             },
-            "command": ".\\main.exe",
+            "command": "chcp 1251; .\\main.exe",
             "problemMatcher": []
         }, // shell.exe.clang.debug
         {
@@ -304,7 +346,7 @@
             "options": {
                 "cwd": "${fileDirname}\\build\\clang\\release\\"
             },
-            "command": ".\\main.exe",
+            "command": "chcp 1251; .\\main.exe",
             "problemMatcher": []
         }, // shell.exe.clang.release
         {
@@ -313,7 +355,7 @@
             "options": {
                 "cwd": "${fileDirname}\\build\\gcc\\debug\\"
             },
-            "command": ".\\main.exe",
+            "command": "chcp 1251; .\\main.exe",
             "problemMatcher": []
         }, // shell.exe.gcc.debug
         {
@@ -322,7 +364,7 @@
             "options": {
                 "cwd": "${fileDirname}\\build\\gcc\\release\\"
             },
-            "command": ".\\main.exe",
+            "command": "chcp 1251; .\\main.exe", 
             "problemMatcher": []
         } // shell.exe.gcc.release
     ]
