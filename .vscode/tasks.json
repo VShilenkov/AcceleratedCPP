@@ -55,7 +55,8 @@
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=\"${workspaceFolder}\\clang_mingw_toolchain.cmake\"",
                 "."
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.generate.clang.release
         {
             "label": "cmake.generate.gcc.debug",
@@ -66,7 +67,8 @@
                 "-DCMAKE_BUILD_TYPE=Debug",
                 "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=\"${workspaceFolder}\\gcc_mingw_toolchain.cmake\"",
                 "."
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.generate.gcc.debug
         {
             "label": "cmake.generate.gcc.release",
@@ -77,7 +79,8 @@
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=\"${workspaceFolder}\\gcc_mingw_toolchain.cmake\"",
                 "."
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.generate.gcc.release
         {
             "label": "cmake.generate.vs",
@@ -85,7 +88,8 @@
             "args": [
                 "-B\".\\build\\vs\"",
                 "."
-            ]
+            ],
+            "problemMatcher": []
         }, // cmake.generate.vs
         {
             "label": "cmake.generate.all",
