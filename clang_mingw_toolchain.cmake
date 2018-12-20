@@ -1,6 +1,6 @@
-set(CMAKE_C_COMPILER      "clang-cl.exe")
-set(CMAKE_CXX_COMPILER    "clang-cl.exe")
-set(CMAKE_LINKER          "lld-link.exe")
+set(CMAKE_C_COMPILER      "clang-cl")
+set(CMAKE_CXX_COMPILER    "clang-cl")
+set(CMAKE_LINKER          "lld-link")
 set(CMAKE_C_COMPILER_ID   "Clang")
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
