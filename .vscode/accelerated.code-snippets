@@ -1,0 +1,52 @@
+{
+	"copyrigth":{
+		"scope": "cpp",
+		"prefix": "copyright",
+		"body": [
+"/******************************************************************************",
+" *       Project: AcceleratedCPP",
+" * (c) Copyright: $CURRENT_YEAR",
+" *       Company: Home",
+" *                All rights reserved",
+" * Secrecy Level: ${1|PUBLIC,PRIVATE|}",
+" *****************************************************************************/"
+		],
+		"description": "Copyright header"
+	},
+	"file_doxygen":{
+		"scope": "cpp",
+		"prefix": "fdox",
+		"body": [
+"/**",
+" *    @file       $TM_FILENAME",
+" *    @author     ${1:VShilenkov}",
+" *    @brief      Параграф $2. Упражнение $3. Страница $4.",
+" *",
+" *    $0",
+" *",
+" *    @see        Эффективное программирование на C++.",
+" *    @see        Практическое программирование на примерах.",
+" *    @see        Эндрю Кёниг, Барбара Му. 2002.",
+" */"
+		],
+		"description": "Doxygen file header"
+	},
+	"history_note":{
+		"scope": "cpp",
+		"prefix": "history_note",
+		"body": [
+"/**",
+" *   Version history:",
+" *",
+" *   $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE   ${1:0}.${2:1}.${3:0}   ${4:VShilenkov}   $0",
+" */"
+		],
+		"description": "Doxygen version note"
+	},
+	"history_line":{
+		"scope": "cpp",
+		"prefix": "history_line",
+		"body": "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE   ${1:0}.${2:1}.${3:0}   ${4:VShilenkov}   $0",
+		"description": "Doxygen version line"
+	}
+}
