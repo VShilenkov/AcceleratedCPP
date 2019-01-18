@@ -38,8 +38,6 @@ using std::string;
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    // Запрашиваем имя человека.
    cout << "Введите, пожалуйста, свое имя: ";
 

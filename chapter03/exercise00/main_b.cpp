@@ -43,8 +43,6 @@ using std::vector;
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    // Запрашиваем и читаем имя студента.
    cout << "Пожалуйста, введите свое имя: ";
    string name;

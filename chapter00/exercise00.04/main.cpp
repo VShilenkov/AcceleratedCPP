@@ -29,13 +29,10 @@
 
 int main( )
 {
-    setlocale(LC_ALL, "Russian");
-
-    std::cout << "#include <iostream>\n\n";
-    std::cout << "int main()\n{\n";
-    std::cout << "\tsetlocale(LC_ALL, \"Russian\");\n\n";
-    std::cout << "\tstd::cout << \"Привет, мир!\";\n\n";
-    std::cout << "\treturn 0;\n}";
+    std::cout << "#include <iostream>"<<std::endl<<std::endl;
+    std::cout << "int main()"<<std::endl<<'{'<<std::endl;
+    std::cout << "\tstd::cout << \"Привет, мир!\";"<<std::endl<<std::endl;
+    std::cout << "\treturn 0;"<<std::endl<<'}';
 
     return 0;
 }

@@ -29,7 +29,6 @@
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
    std::cout << "¬ведите два числа: ";
    int a, b;
    std::cin >> a >> b;

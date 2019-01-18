@@ -30,7 +30,6 @@
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
    { std::string s = "одна строка";
    { std::string x = s + ", действительно";
      std::cout << s << std::endl; //}

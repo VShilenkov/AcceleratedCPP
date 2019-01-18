@@ -74,7 +74,6 @@ vector<string> center (const vector<string>& v)
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
 	ifstream in("input.txt");
 	string s;
 	vector<string> text, centered;

@@ -245,6 +245,320 @@
             ],
             "problemMatcher": []
         }, // cmake.build.all
+        // ---------------------------------------------------------- Preprocess
+        {
+            "label": "cmake.preprocess.clang.debug",
+            "dependsOn": "cmake.generate.clang.debug",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\clang\\debug",
+                "--target",
+                "main.i",
+                ";",
+                "Copy-Item",
+                ".\\build\\clang\\debug\\CMakeFiles\\main.dir\\*.i",
+                ".\\build\\clang\\debug\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "clang-cl",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h))\\(([0-9]+),([0-9]+)\\):\\s*(error|warning|info):\\s*(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.preprocess.clang.debug
+        {
+            "label": "cmake.preprocess.clang.release",
+            "dependsOn": "cmake.generate.clang.release",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\clang\\release",
+                "--target",
+                "main.i",
+                ";",
+                "Copy-Item",
+                ".\\build\\clang\\release\\CMakeFiles\\main.dir\\*.i",
+                ".\\build\\clang\\release\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "clang-cl",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h))\\(([0-9]+),([0-9]+)\\):\\s*(error|warning|info):\\s*(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.preprocess.clang.release
+        {
+            "label": "cmake.preprocess.gcc.debug",
+            "dependsOn": "cmake.generate.gcc.debug",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\gcc\\debug",
+                "--target",
+                "main.i",
+                ";",
+                "Copy-Item",
+                ".\\build\\gcc\\debug\\CMakeFiles\\main.dir\\*.i",
+                ".\\build\\gcc\\debug\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "gcc",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h)):([0-9]+):([0-9]+):\\s(error|warning|info):\\s(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.preprocess.gcc.debug
+        {
+            "label": "cmake.preprocess.gcc.release",
+            "dependsOn": "cmake.generate.gcc.release",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\gcc\\release",
+                "--target",
+                "main.i",
+                ";",
+                "Copy-Item",
+                ".\\build\\gcc\\release\\CMakeFiles\\main.dir\\*.i",
+                ".\\build\\gcc\\release\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "gcc",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h)):([0-9]+):([0-9]+):\\s(error|warning|info):\\s(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.preprocess.gcc.release
+        // ------------------------------------------------------------ Assembly
+        {
+            "label": "cmake.assembly.clang.debug",
+            "dependsOn": "cmake.generate.clang.debug",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\clang\\debug",
+                "--target",
+                "main.s",
+                ";",
+                "Copy-Item",
+                ".\\build\\clang\\debug\\CMakeFiles\\main.dir\\*.s",
+                ".\\build\\clang\\debug\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "clang-cl",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h))\\(([0-9]+),([0-9]+)\\):\\s*(error|warning|info):\\s*(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.assembly.clang.debug
+        {
+            "label": "cmake.assembly.clang.release",
+            "dependsOn": "cmake.generate.clang.release",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\clang\\release",
+                "--target",
+                "main.s",
+                ";",
+                "Copy-Item",
+                ".\\build\\clang\\release\\CMakeFiles\\main.dir\\*.s",
+                ".\\build\\clang\\release\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "clang-cl",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h))\\(([0-9]+),([0-9]+)\\):\\s*(error|warning|info):\\s*(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.assembly.clang.release
+        {
+            "label": "cmake.assembly.gcc.debug",
+            "dependsOn": "cmake.generate.gcc.debug",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\gcc\\debug",
+                "--target",
+                "main.s",
+                ";",
+                "Copy-Item",
+                ".\\build\\gcc\\debug\\CMakeFiles\\main.dir\\*.s",
+                ".\\build\\gcc\\debug\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "gcc",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h)):([0-9]+):([0-9]+):\\s(error|warning|info):\\s(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.assembly.gcc.debug
+        {
+            "label": "cmake.assembly.gcc.release",
+            "dependsOn": "cmake.generate.gcc.release",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".\\build\\gcc\\release",
+                "--target",
+                "main.s",
+                ";",
+                "Copy-Item",
+                ".\\build\\gcc\\release\\CMakeFiles\\main.dir\\*.s",
+                ".\\build\\gcc\\release\\"
+            ],
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "applyTo": "allDocuments",
+                "fileLocation": "absolute",
+                "source": "gcc",
+                "pattern": [
+                    {
+                        "regexp": "^([a-zA-Z0-9\\\\-_:.]+?\\.(?:cpp|hpp|c|h)):([0-9]+):([0-9]+):\\s(error|warning|info):\\s(.*?)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 3,
+                        "severity": 4,
+                        "message": 5
+                    },
+                    {
+                        "regexp": "^\\s*(.*?)\\s*$",
+                        "code": 1
+                    },
+                    {
+                        "regexp": "^\\s*\\^[ ~]*\\s*$"
+                    }
+                ]
+            }
+        }, // cmake.assembly.gcc.release
         // --------------------------------------------------------------- Clean
         {
             "label": "cmake.clean.clang.debug",
@@ -304,7 +618,7 @@
         // -------------------------------------------------------------- Rebuid
         {
             "label": "cmake.rebuild.clang.debug",
-            "dependsOn":[
+            "dependsOn": [
                 "cmake.clean.clang.debug",
                 "cmake.build.clang.debug"
             ],
@@ -312,7 +626,7 @@
         }, // cmake.rebuild.clang.debug
         {
             "label": "cmake.rebuild.clang.release",
-            "dependsOn":[
+            "dependsOn": [
                 "cmake.clean.clang.release",
                 "cmake.build.clang.release"
             ],
@@ -320,7 +634,7 @@
         }, // cmake.rebuild.clang.release
         {
             "label": "cmake.rebuild.gcc.debug",
-            "dependsOn":[
+            "dependsOn": [
                 "cmake.clean.gcc.debug",
                 "cmake.build.gcc.debug"
             ],
@@ -328,7 +642,7 @@
         }, // cmake.rebuild.gcc.debug
         {
             "label": "cmake.rebuild.gcc.release",
-            "dependsOn":[
+            "dependsOn": [
                 "cmake.clean.gcc.release",
                 "cmake.build.gcc.release"
             ],
@@ -368,7 +682,7 @@
             "options": {
                 "cwd": "${fileDirname}\\build\\gcc\\release\\"
             },
-            "command": "chcp 1251; .\\main.exe", 
+            "command": "chcp 1251; .\\main.exe",
             "problemMatcher": []
         } // shell.exe.gcc.release
     ]

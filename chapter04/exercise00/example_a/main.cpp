@@ -90,8 +90,6 @@ istream& read_hw(istream& in, vector<double>& hw)
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    cout << "Пожалуйста, введите свое имя: ";
    string name;
    cin >> name;

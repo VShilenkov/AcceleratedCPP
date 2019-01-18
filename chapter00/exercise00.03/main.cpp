@@ -30,8 +30,6 @@
 
 int main( )
 {
-    setlocale(LC_ALL, "Russian");
-
     std::cout << "|\t|" << std::endl;
     std::cout << "|||||||||" << std::endl;
     std::cout << "123456789" << std::endl;

@@ -43,8 +43,6 @@ using std::streamsize;
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    // Запрашиваем и считываем имя студента.
    cout << "Пожалуйста, введите свое имя: ";
    string name;

@@ -29,8 +29,6 @@
 
 int main( )
 {
-    setlocale(LC_ALL, "Russian");
-
     std::cout << "Привет,\nмир!";
 
     return 0;

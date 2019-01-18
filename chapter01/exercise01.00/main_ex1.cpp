@@ -32,8 +32,6 @@
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    std::cout << "Введите, пожалуйста, свое имя: ";
    std::string name;
    std::cin >> name;

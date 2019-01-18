@@ -29,8 +29,6 @@
 
 int main( )
 {
-    setlocale(LC_ALL, "Russian");
-
     std::cout << "Это (\") - кавычки, а это (\\) - обратная косая черта.";
 
     return 0;

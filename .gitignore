@@ -1,6 +1,14 @@
 # Prerequisites
 *.d
 
+# Preprocessed files
+**/build/**/*.i
+**/build/**/*.ii
+
+# Assembley files
+**/build/**/*.s
+**/build/**/*.asm
+
 # Compiled Object files
 *.slo
 *.lo
@@ -31,6 +39,7 @@
 *.out
 *.app
 
+# Executable symbols dadtabase
 *.pdb
 
 # Visual Studio Code

@@ -120,8 +120,6 @@ bool compare(const Student_info& x, const Student_info& y)
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    vector<Student_info> students;
    Student_info record;
    string::size_type maxlen = 0;

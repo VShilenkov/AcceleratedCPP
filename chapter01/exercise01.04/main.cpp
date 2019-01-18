@@ -30,8 +30,6 @@
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    { const std::string s = "одна строка";
      std::cout << s << std::endl;
    { const std::string s = "другая строка";

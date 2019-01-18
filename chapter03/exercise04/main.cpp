@@ -47,8 +47,6 @@ using std::vector;
 
 int main()
 {
-   setlocale(LC_ALL, "Russian");
-
    vector<string> students;
    vector<double> scores;
    bool stop = false;
