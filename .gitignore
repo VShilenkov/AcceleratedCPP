@@ -49,6 +49,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/accelerated.code-snippets
+!.vscode/cmake-kits.json
 
 # CMake 
 CMakeCache.txt

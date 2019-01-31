@@ -1,7 +1,7 @@
-set(CMAKE_C_COMPILER      "gcc")
-set(CMAKE_CXX_COMPILER    "g++")
-set(CMAKE_LINKER          "ld")
-set(CMAKE_C_COMPILER_ID   "GNU")
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER      "gcc" CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER    "g++" CACHE STRING "" FORCE)
+set(CMAKE_LINKER          "ld"  CACHE STRING "" FORCE)
+set(CMAKE_C_COMPILER_ID   "GNU" CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER_ID "GNU" CACHE STRING "" FORCE)
 
 add_compile_options("SHELL:-Wall -Wpedantic -Wextra")

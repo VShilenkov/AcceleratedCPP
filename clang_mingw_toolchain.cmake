@@ -1,8 +1,8 @@
-set(CMAKE_C_COMPILER      "clang-cl")
-set(CMAKE_CXX_COMPILER    "clang-cl")
-set(CMAKE_LINKER          "lld-link")
-set(CMAKE_C_COMPILER_ID   "Clang")
-set(CMAKE_CXX_COMPILER_ID "Clang")
+set(CMAKE_C_COMPILER      "clang-cl" CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER    "clang-cl" CACHE STRING "" FORCE)
+set(CMAKE_LINKER          "lld-link" CACHE STRING "" FORCE)
+set(CMAKE_C_COMPILER_ID   "Clang"    CACHE STRING "" FORCE)
+set(CMAKE_CXX_COMPILER_ID "Clang"    CACHE STRING "" FORCE)
 
 add_compile_options("/Wall")
 
