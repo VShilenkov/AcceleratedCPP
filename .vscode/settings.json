@@ -1,18 +1,16 @@
 {
-    "editor.mouseWheelZoom": true,
-    "editor.renderWhitespace": "all",
-    "editor.rulers": [80, 120, 160],
-    "editor.emptySelectionClipboard": false,
-    
-    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
+    "cmake.buildDirectory": "${workspaceRoot}/build/${buildKit}/${generator}/${buildType}",
+    "cmake.configureOnOpen": true,
 
-    "files.autoGuessEncoding": true,
+    "editor.emptySelectionClipboard": false,
+    "editor.mouseWheelZoom"         : true,
+    "editor.renderWhitespace"       : "all",
+    "editor.rulers"                 : [80, 120, 160],
 
     "explorer.sortOrder": "type",
 
-    "cmake.configureOnOpen": true,
-    
-    "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "files.autoGuessEncoding": true,
 
-    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}"
+
 }
