@@ -11,6 +11,9 @@
 
     "files.autoGuessEncoding": true,
 
-    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}"
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
+    "files.associations": {
+        "iostream": "cpp"
+    }
 
 }
