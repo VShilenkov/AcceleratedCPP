@@ -1,14 +1,14 @@
 [
   {
-    "name": "Win MinGW GCC 6.3.0",
-    "toolchainFile" : "${workspaceFolder}\\gcc_mingw_toolchain.cmake",
+    "name": "Toolchain GCC",
+    "toolchainFile" : "${workspaceFolder}\\cmake\\toolchain\\gcc_toolchain.cmake",
     "preferredGenerator": {
       "name": "MinGW Makefiles"
     }
   },
   {
-    "name": "Win MinGW Clang 7.0.0",
-    "toolchainFile": "${workspaceFolder}\\gcc_mingw_toolchain.cmake",
+    "name": "Toolchain Clang",
+    "toolchainFile": "${workspaceFolder}\\cmake\\toolchain\\clang_toolchain.cmake",
     "preferredGenerator": {
       "name": "MinGW Makefiles"
     }
