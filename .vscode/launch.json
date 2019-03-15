@@ -8,32 +8,65 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\build\\Win MinGW Clang 7.0.0\\MinGW Makefiles\\Debug\\chapter00\\exercise00.01\\c00.e01.exe",
+            "program": "c00.e01.exe",
             "args": [],
             "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${vector-of-bool.cmake-tools.buildDirectory}/chapter00/exercise00.01",
             "environment": [],
-            "externalConsole": true
+            "externalConsole": false
         },
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "windows": {
-                "program": "${workspaceFolder}\\build\\Win MinGW GCC 6.3.0\\MinGW Makefiles\\Debug\\chapter00\\exercise00.01\\c00.e01.exe",
-                "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",
-            },
+            // ------------------
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": ".",
             "args": [],
-            "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "targetArchitecture": "x64",
+            "stopAtEntry": false,
+            // ------------------
             "MIMode": "gdb",
+            "windows": {
+                "miDebuggerPath": "C:\\MinGW\\bin\\gdb"
+            },
+            "linux": {
+                "miDebuggerPath": "/usr/bin/gdb",
+            },
+            "miDebuggerArgs": "-q",
+            "externalConsole": false,
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            // ------------------
+            "program": "${command:cmake.launchTargetPath}",
+            "cwd": ".",
+            "args": [],
+            "environment": [],
+            "targetArchitecture": "x64",
+            "stopAtEntry": false,
+            // ------------------
+            "MIMode": "lldb",
+            "linux": {
+                "miDebuggerPath": "/usr/bin/lldb-mi",
+            },
+            "miDebuggerArgs": "-q",
+            "externalConsole": false,
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
                 }
             ]
         }
