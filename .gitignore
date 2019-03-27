@@ -50,6 +50,7 @@
 !.vscode/extensions.json
 !.vscode/accelerated.code-snippets
 !.vscode/cmake-kits.json
+!.vscode/c_cpp_properties.json
 
 # CMake 
 CMakeCache.txt

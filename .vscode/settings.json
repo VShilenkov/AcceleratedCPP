@@ -1,7 +1,18 @@
 {
-    "cmake.buildDirectory": "${workspaceRoot}/build/${buildKit}/${generator}/${buildType}",
-    "cmake.configureOnOpen": true,
+    "C_Cpp.loggingLevel": "Information",
 
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+    "C_Cpp.default.compileCommands": "${config:cmake.copyCompileCommands}",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.cppStandard": "c++14",
+
+    "cmake.loggingLevel"    : "info",
+    "cmake.configureOnOpen" : true,
+    
+    "cmake.buildDirectory"      : "${workspaceFolder}/build/${buildKit}/${buildType}",
+    "cmake.copyCompileCommands" : "${workspaceFolder}/build/compile_commands.json",
+    "cmake.mingwSearchDirs"     : ["c:/msys64/mingw64"],
+    
     "editor.emptySelectionClipboard": false,
     "editor.mouseWheelZoom"         : true,
     "editor.renderWhitespace"       : "all",
@@ -13,7 +24,45 @@
 
     "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "cmath": "cpp",
+        "cstddef": "cpp",
+        "cstring": "cpp",
+        "ios": "cpp",
+        "xfacet": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocnum": "cpp",
+        "xmemory0": "cpp",
+        "xstddef": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp"
     }
 
 }
