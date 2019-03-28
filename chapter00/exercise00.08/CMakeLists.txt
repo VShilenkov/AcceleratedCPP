@@ -1,1 +1,1 @@
-add_executable(main main.cpp)
+add_executable(c00.e08 main.cpp)
