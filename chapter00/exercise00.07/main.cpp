@@ -37,11 +37,11 @@ int main( )
 
 // main.cpp: In function 'int main()':
 // main.cpp:32 : 16 : error : expected primary - expression before '.' token
-//символы /* ш */. * /
+//символы /* и */. * /
 //               ^
 // main.cpp : 32 : 18 : error : expected unqualified - id before '*' token
-//символы /* ш */. * /
+//символы /* и */. * /
 //                 ^
 // main.cpp : 32 : 19 : error : expected primary - expression before '/' token
-//символы /* ш */. * /
+//символы /* и */. * /
 //                   ^
