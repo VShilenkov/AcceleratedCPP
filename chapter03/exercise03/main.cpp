@@ -9,16 +9,16 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Ïàðàãðàô 03. Óïðàæíåíèå 03. Ñòðàíèöà 074.
- *    
- *    Íàïèøèòå ïðîãðàììó äëÿ âûâîäà äëèíû ñàìîãî äëèííîãî è ñàìîãî êîðîòêîãî 
- *    string-çíà÷åíèÿ âî ââåäåííûõ äàííûõ.
+ *    @brief      ÐŸÐ°Ñ€Ð°Ð³Ñ€Ð°Ñ„ 03. Ð£Ð¿Ñ€Ð°Ð¶Ð½ÐµÐ½Ð¸Ðµ 03. Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° 074.
  *
- *    @see        Ýôôåêòèâíîå ïðîãðàììèðîâàíèå íà C++.
- *    @see        Ïðàêòè÷åñêîå ïðîãðàììèðîâàíèå íà ïðèìåðàõ.
- *    @see        Ýíäðþ Ê¸íèã, Áàðáàðà Ìó. 2002.
+ *    ÐÐ°Ð¿Ð¸ÑˆÐ¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñƒ Ð´Ð»Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð´Ð»Ð¸Ð½Ñ‹ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ð´Ð»Ð¸Ð½Ð½Ð¾Ð³Ð¾ Ð¸ ÑÐ°Ð¼Ð¾Ð³Ð¾ ÐºÐ¾Ñ€Ð¾Ñ‚ÐºÐ¾Ð³Ð¾
+ *    string-Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð²Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ….
+ *
+ *    @see        Ð­Ñ„Ñ„ÐµÐºÑ‚Ð¸Ð²Ð½Ð¾Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð½Ð° C++.
+ *    @see        ÐŸÑ€Ð°ÐºÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð½Ð° Ð¿Ñ€Ð¸Ð¼ÐµÑ€Ð°Ñ….
+ *    @see        Ð­Ð½Ð´Ñ€ÑŽ ÐšÑ‘Ð½Ð¸Ð³, Ð‘Ð°Ñ€Ð±Ð°Ñ€Ð° ÐœÑƒ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -33,29 +33,35 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main()
+int main( )
 {
-   string word;
+    string word;
 
-   if (cin >> word)
-   {
-      string longestWord(word);
-      string shortestWord(word);
+    if (cin >> word)
+    {
+        string longestWord(word);
+        string shortestWord(word);
 
-      while (cin >> word)
-      {
-         if (word.size() > longestWord.size()) longestWord = word;
-         if (word.size() < shortestWord.size()) shortestWord = word;
-      }
+        while (cin >> word)
+        {
+            if (word.size( ) > longestWord.size( ))
+            {
+                longestWord = word;
+            }
+            if (word.size( ) < shortestWord.size( ))
+            {
+                shortestWord = word;
+            }
+        }
 
-      cout << "Ñàìîå äëèííîå ñëîâî: " << longestWord << ". Åãî äëèíà: " << longestWord.size() << endl;
-      cout << "Ñàìîå êîðîòêîå ñëîâî: " << shortestWord << ". Åãî äëèíà: " << shortestWord.size() << endl;
-   }
-   else
-   {
-      cout << "Íå ââåäåíî íè åäèíîãî ñëîâà.";
-      return 1;
-   }
+        cout << "Ð¡Ð°Ð¼Ð¾Ðµ Ð´Ð»Ð¸Ð½Ð½Ð¾Ðµ ÑÐ»Ð¾Ð²Ð¾: " << longestWord << ". Ð•Ð³Ð¾ Ð´Ð»Ð¸Ð½Ð°: " << longestWord.size( ) << endl;
+        cout << "Ð¡Ð°Ð¼Ð¾Ðµ ÐºÐ¾Ñ€Ð¾Ñ‚ÐºÐ¾Ðµ ÑÐ»Ð¾Ð²Ð¾: " << shortestWord << ". Ð•Ð³Ð¾ Ð´Ð»Ð¸Ð½Ð°: " << shortestWord.size( ) << endl;
+    }
+    else
+    {
+        cout << "ÐÐµ Ð²Ð²ÐµÐ´ÐµÐ½Ð¾ Ð½Ð¸ ÐµÐ´Ð¸Ð½Ð¾Ð³Ð¾ ÑÐ»Ð¾Ð²Ð°.";
+        return 1;
+    }
 
-   return 0;
+    return 0;
 }
