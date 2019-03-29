@@ -1,0 +1,1 @@
+add_executable(c02.e01 main.cpp)
