@@ -9,16 +9,16 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 03. Упражнение 02. Страница 074.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 03. РЈРїСЂР°Р¶РЅРµРЅРёРµ 02. РЎС‚СЂР°РЅРёС†Р° 074.
  *
- *    Напишите программу, которая должна вычислить, сколько раз каждое отдельное 
- *    слово содержится во введенных данных.
+ *    РќР°РїРёС€РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ, РєРѕС‚РѕСЂР°СЏ РґРѕР»Р¶РЅР° РІС‹С‡РёСЃР»РёС‚СЊ, СЃРєРѕР»СЊРєРѕ СЂР°Р· РєР°Р¶РґРѕРµ РѕС‚РґРµР»СЊРЅРѕРµ
+ *    СЃР»РѕРІРѕ СЃРѕРґРµСЂР¶РёС‚СЃСЏ РІРѕ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С….
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -37,37 +37,37 @@ using std::sort;
 using std::string;
 using std::vector;
 
-int main()
+int main( )
 {
-   vector<string> words;
+    vector<string> words;
 
-   string word;
+    string word;
 
-   while (cin >> word)
-   {
-      words.push_back(word);
-   }
+    while (cin >> word)
+    {
+        words.push_back(word);
+    }
 
-   sort(words.begin(), words.end());
+    sort(words.begin( ), words.end( ));
 
-   typedef vector<string>::iterator vec_string_i;
+    typedef vector<string>::iterator vec_string_i;
 
-   word = *words.begin();
-   size_t count = 0;
-   for (vec_string_i i = words.begin(); i != words.end(); i++)
-   {
-      if (word != *i)
-      {
-         cout << word << "\t" << count << endl;
-         word = *i;
-         count = 1;
-      }
-      else
-      {
-         count++;
-      }
-   }
-   cout << word << count << endl;
+    word         = *words.begin( );
+    size_t count = 0U;
+    for (vec_string_i i = words.begin( ); i != words.end( ); i++)
+    {
+        if (word != *i)
+        {
+            cout << word << "\t" << count << endl;
+            word  = *i;
+            count = 1U;
+        }
+        else
+        {
+            count++;
+        }
+    }
+    cout << word << count << endl;
 
-   return 0;
+    return 0;
 }
