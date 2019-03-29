@@ -9,16 +9,16 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 02. Упражнение 05. Страница 057.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 02. РЈРїСЂР°Р¶РЅРµРЅРёРµ 05. РЎС‚СЂР°РЅРёС†Р° 057.
  *
- *    Выведите ряд символов "*" так, чтобы они образовали квадрат, прямоугольник и
- *    треугольник.
+ *    Р’С‹РІРµРґРёС‚Рµ СЂСЏРґ СЃРёРјРІРѕР»РѕРІ "*" С‚Р°Рє, С‡С‚РѕР±С‹ РѕРЅРё РѕР±СЂР°Р·РѕРІР°Р»Рё РєРІР°РґСЂР°С‚, РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє Рё
+ *    С‚СЂРµСѓРіРѕР»СЊРЅРёРє.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -33,29 +33,40 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int main()
+int main( )
 {
-   unsigned square_edge = 10U;
-   unsigned rectangle_height = 13U;
-   unsigned rectangle_width = 26U;
-   unsigned triangle_height = 7U;
+    unsigned square_edge      = 10U;
+    unsigned rectangle_height = 13U;
+    unsigned rectangle_width  = 26U;
+    unsigned triangle_height  = 7U;
 
-   unsigned rows = square_edge;
-   if (rows < rectangle_height) rows = rectangle_height;
-   if (rows < triangle_height) rows = triangle_height;
+    unsigned rows = square_edge;
+    if (rows < rectangle_height)
+    {
+        rows = rectangle_height;
+    }
+    if (rows < triangle_height)
+    {
+        rows = triangle_height;
+    }
 
-   for (unsigned r = 0; r != rows; r++)
-   {
-      if (rows - r <= square_edge) cout << string(square_edge, '*') << " ";
-      else cout << string(square_edge + 1, ' ');
+    for (unsigned r = 0U; r != rows; r++)
+    {
+        if (rows - r <= square_edge)
+            cout << string(square_edge, '*') << " ";
+        else
+            cout << string(square_edge + 1, ' ');
 
-      if (rows - r <= rectangle_height) cout << string(rectangle_width, '*') << " ";
-      else cout << string(rectangle_width + 1, ' ');
+        if (rows - r <= rectangle_height)
+            cout << string(rectangle_width, '*') << " ";
+        else
+            cout << string(rectangle_width + 1, ' ');
 
-      if (rows - r <= triangle_height) cout << string(triangle_height + r - rows + 1, '*');
+        if (rows - r <= triangle_height)
+            cout << string(triangle_height + r - rows + 1, '*');
 
-      cout << endl;
-   }
+        cout << endl;
+    }
 
-   return 0;
+    return 0;
 }
