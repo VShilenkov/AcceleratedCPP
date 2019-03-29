@@ -23,11 +23,11 @@ AlignOperands:                  true
 AlignTrailingComments:          true
 
 # -------------------------------------------------- Short instructions per line
-AllowShortBlocksOnASingleLine:          true
-AllowShortCaseLabelsOnASingleLine:      true
+AllowShortBlocksOnASingleLine:          false
+AllowShortCaseLabelsOnASingleLine:      false
 AllowShortFunctionsOnASingleLine:       Inline
-AllowShortIfStatementsOnASingleLine:    true
-AllowShortLoopsOnASingleLine:           true
+AllowShortIfStatementsOnASingleLine:    false
+AllowShortLoopsOnASingleLine:           false
 
 # ------------------------------------------------------------------ Bin Packing
 BinPackArguments:                   false
@@ -35,7 +35,6 @@ BinPackParameters:                  false
 ExperimentalAutoDetectBinPacking:   false
 
 # ----------------------------------------------------------------------- Breaks
-AlwaysBreakAfterDefinitionReturnType:   None
 AlwaysBreakAfterReturnType:             None
 AlwaysBreakBeforeMultilineStrings:      false
 AlwaysBreakTemplateDeclarations:        Yes
@@ -47,7 +46,7 @@ BraceWrapping:
   AfterEnum:                true
   AfterFunction:            true
   AfterNamespace:           false
-  AfterObjCDeclaration:     false
+  # AfterObjCDeclaration:     false
   AfterStruct:              true
   AfterUnion:               true
   AfterExternBlock:         false
@@ -63,7 +62,7 @@ BreakBeforeBinaryOperators:                 NonAssignment
 BreakBeforeInheritanceComma:                true
 BreakBeforeTernaryOperators:                true
 BreakConstructorInitializers:               BeforeComma
-BreakConstructorInitializersBeforeComma:    true
+# BreakConstructorInitializersBeforeComma:    true
 BreakInheritanceList:                       BeforeComma
 BreakStringLiterals:                        true
 
@@ -108,14 +107,14 @@ KeepEmptyLinesAtTheStartOfBlocks:   true
 MaxEmptyLinesToKeep:                1
 
 # -------------------------------------------------------------------- Penalties
-PenaltyBreakAssignment:                 1
-PenaltyBreakBeforeFirstCallParameter:   40
-PenaltyBreakComment:                    100
+PenaltyBreakAssignment:                 10
+PenaltyBreakBeforeFirstCallParameter:   200
+PenaltyBreakComment:                    50
 PenaltyBreakFirstLessLess:              120
 PenaltyBreakString:                     100
 PenaltyBreakTemplateDeclaration:        10
 PenaltyExcessCharacter:                 100
-PenaltyReturnTypeOnItsOwnLine:          40
+PenaltyReturnTypeOnItsOwnLine:          80
 
 # ----------------------------------------------------------------------- Spaces
 SpaceAfterCStyleCast:               false
