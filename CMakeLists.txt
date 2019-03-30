@@ -8,7 +8,7 @@ endif()
 
 add_compile_options("-m64")
 
-# add_subdirectory(chapter00)
-# add_subdirectory(chapter01)
-# add_subdirectory(chapter02)
+add_subdirectory(chapter00)
+add_subdirectory(chapter01)
+add_subdirectory(chapter02)
 add_subdirectory(chapter03)
