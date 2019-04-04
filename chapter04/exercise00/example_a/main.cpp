@@ -9,16 +9,16 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 00. Страница 099.
- *    
- *    Скомпилируйте, выполните и протестируйте программы, приведенные в этой главе.
- *    (Пример a. Страница 084)
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 00. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    РЎРєРѕРјРїРёР»РёСЂСѓР№С‚Рµ, РІС‹РїРѕР»РЅРёС‚Рµ Рё РїСЂРѕС‚РµСЃС‚РёСЂСѓР№С‚Рµ РїСЂРѕРіСЂР°РјРјС‹, РїСЂРёРІРµРґРµРЅРЅС‹Рµ РІ СЌС‚РѕР№ РіР»Р°РІРµ.
+ *    (РџСЂРёРјРµСЂ a. РЎС‚СЂР°РЅРёС†Р° 084)
+ *
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -26,101 +26,105 @@
  */
 
 #include <algorithm>
-#include <iostream>
-#include <ios>
 #include <iomanip>
-#include <vector>
-#include <string>
+#include <ios>
+#include <iostream>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 using std::cin;
 using std::cout;
 
 using std::endl;
-using std::sort;
 using std::setprecision;
+using std::sort;
 
-using std::vector;
-using std::string;
 using std::domain_error;
 using std::istream;
 using std::streamsize;
+using std::string;
+using std::vector;
 
+double   median(vector<double>);
+double   grade(double, double, double);
+double   grade(double, double, const vector<double>&);
+istream& read_hw(istream&, vector<double>&);
 
 double median(vector<double> vec)
 {
-   typedef vector<double>::size_type vec_sz;
+    typedef vector<double>::size_type vec_sz;
 
-   vec_sz size = vec.size();
-   if (size == 0)
-      throw domain_error("Медиана пустого вектора.");
+    vec_sz size = vec.size( );
+    if (size == 0)
+        throw domain_error("РњРµРґРёР°РЅР° РїСѓСЃС‚РѕРіРѕ РІРµРєС‚РѕСЂР°.");
 
-   sort(vec.begin(), vec.end());
-   vec_sz mid = size / 2;
+    sort(vec.begin( ), vec.end( ));
+    vec_sz mid = size / 2;
 
-   return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
+    return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
 }
 
 double grade(double midterm, double fin, double homework)
 {
-   return 0.2 * midterm + 0.4 * fin + 0.4 * homework;
+    return 0.2 * midterm + 0.4 * fin + 0.4 * homework;
 }
 
 double grade(double midterm, double fin, const vector<double>& hw)
 {
-   if (hw.size() == 0)
-      throw domain_error("Студент не сделал ни одного домашнего задания ");
-   return grade(midterm, fin, median(hw));
+    if (hw.size( ) == 0)
+        throw domain_error("РЎС‚СѓРґРµРЅС‚ РЅРµ СЃРґРµР»Р°Р» РЅРё РѕРґРЅРѕРіРѕ РґРѕРјР°С€РЅРµРіРѕ Р·Р°РґР°РЅРёСЏ ");
+    return grade(midterm, fin, median(hw));
 }
 
 istream& read_hw(istream& in, vector<double>& hw)
 {
-   if (in)
-   {
-      hw.clear();
+    if (in)
+    {
+        hw.clear( );
 
-      double x;
-      while (in >> x)
-         hw.push_back(x);
+        double x;
+        while (in >> x)
+            hw.push_back(x);
 
-      in.clear();
-   }
-   return in;
+        in.clear( );
+    }
+    return in;
 }
 
-int main()
+int main( )
 {
-   cout << "Пожалуйста, введите свое имя: ";
-   string name;
-   cin >> name;
-   cout << "Привет, " << name << "!" << endl;
+    cout << "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ СЃРІРѕРµ РёРјСЏ: ";
+    string name;
+    cin >> name;
+    cout << "РџСЂРёРІРµС‚, " << name << "!" << endl;
 
-   cout << "Пожалуйста, введите оценки по экзаменам, "
-      "проведенным в середине и конце семестра: ";
-   double midterm, fin;
-   cin >> midterm >> fin;
+    cout << "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РѕС†РµРЅРєРё РїРѕ СЌРєР·Р°РјРµРЅР°Рј, "
+            "РїСЂРѕРІРµРґРµРЅРЅС‹Рј РІ СЃРµСЂРµРґРёРЅРµ Рё РєРѕРЅС†Рµ СЃРµРјРµСЃС‚СЂР°: ";
+    double midterm, fin;
+    cin >> midterm >> fin;
 
-   cout << "Введите все оценки за выполнение домашних заданий, "
-      "завершив ввод признаком конца файла: ";
+    cout << "Р’РІРµРґРёС‚Рµ РІСЃРµ РѕС†РµРЅРєРё Р·Р° РІС‹РїРѕР»РЅРµРЅРёРµ РґРѕРјР°С€РЅРёС… Р·Р°РґР°РЅРёР№, "
+            "Р·Р°РІРµСЂС€РёРІ РІРІРѕРґ РїСЂРёР·РЅР°РєРѕРј РєРѕРЅС†Р° С„Р°Р№Р»Р°: ";
 
-   vector<double> homework;
+    vector<double> homework;
 
-   read_hw(cin, homework);
+    read_hw(cin, homework);
 
-   try
-   {
-      double final_grade = grade(midterm, fin, homework);
-      streamsize prec = cout.precision();
-      cout << "Ваша итоговая оценка равна " << setprecision(3)
-         << final_grade << setprecision(prec) << endl;
-   }
-   catch (domain_error)
-   {
-      cout << "Вы должны ввести свои оценки. "
-         << "Пожалуйста, попытайтесь снова." << endl;
-      return 1;
-   }
+    try
+    {
+        double     final_grade = grade(midterm, fin, homework);
+        streamsize prec        = cout.precision( );
+        cout << "Р’Р°С€Р° РёС‚РѕРіРѕРІР°СЏ РѕС†РµРЅРєР° СЂР°РІРЅР° " << setprecision(3) << final_grade;
+        cout.precision(prec);
+        cout << endl;
+    }
+    catch (domain_error)
+    {
+        cout << "Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё СЃРІРѕРё РѕС†РµРЅРєРё. "
+             << "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїС‹С‚Р°Р№С‚РµСЃСЊ СЃРЅРѕРІР°." << endl;
+        return 1;
+    }
 
-   return 0;
+    return 0;
 }
-
