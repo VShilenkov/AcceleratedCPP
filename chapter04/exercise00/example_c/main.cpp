@@ -9,21 +9,24 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 00. Страница 099.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 00. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    Скомпилируйте, выполните и протестируйте программы, приведенные в этой главе.
- *    (Пример c. Страница 096)
+ *    РЎРєРѕРјРїРёР»РёСЂСѓР№С‚Рµ, РІС‹РїРѕР»РЅРёС‚Рµ Рё РїСЂРѕС‚РµСЃС‚РёСЂСѓР№С‚Рµ РїСЂРѕРіСЂР°РјРјС‹, РїСЂРёРІРµРґРµРЅРЅС‹Рµ РІ СЌС‚РѕР№ РіР»Р°РІРµ.
+ *    (РџСЂРёРјРµСЂ c. РЎС‚СЂР°РЅРёС†Р° 096)
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
+
+#include "Student_info.hpp"
+#include "grade.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -32,8 +35,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include "grade.hpp"
-#include "Student_info.hpp"
 
 using std::cin;
 using std::cout;
@@ -46,35 +47,36 @@ using std::streamsize;
 using std::string;
 using std::vector;
 
-int main()
+int main( )
 {
-   vector<Student_info> students;
-   Student_info record;
-   string::size_type maxlen = 0;
+    vector<Student_info> students;
+    Student_info         record;
+    string::size_type    maxlen = 0;
 
-   while (read(cin, record))
-   {
-      maxlen = max(maxlen, record.name.size());
-      students.push_back(record);
-   }
+    while (read(cin, record))
+    {
+        maxlen = max(maxlen, record.name.size( ));
+        students.push_back(record);
+    }
 
-   sort(students.begin(), students.end(), compare);
+    sort(students.begin( ), students.end( ), compare);
 
-   for (vector<Student_info>::size_type i = 0; i != students.size(); i++)
-   {
-      cout << students[i].name << string(maxlen - students[i].name.size() + 1, ' ');
-      try
-      {
-         double final_grade = grade(students[i]);
-         streamsize prec = cout.precision();
-         cout << setprecision(3) << final_grade << setprecision(prec);
-      }
-      catch (domain_error e)
-      {
-         cout << e.what();
-      }
-      cout << endl;
-   }
+    for (vector<Student_info>::size_type i = 0; i != students.size( ); i++)
+    {
+        cout << students[i].name << string(maxlen - students[i].name.size( ) + 1, ' ');
+        try
+        {
+            double     final_grade = grade(students[i]);
+            streamsize prec        = cout.precision( );
+            cout << setprecision(3) << final_grade;
+            cout.precision(prec);
+        }
+        catch (domain_error e)
+        {
+            cout << e.what( );
+        }
+        cout << endl;
+    }
 
-   return 0;
+    return 0;
 }

@@ -1,5 +1,5 @@
 #ifndef GUARD_median_hpp
-#define GUARD_mediam_hpp
+#define GUARD_median_hpp
 
 #include <vector>
 

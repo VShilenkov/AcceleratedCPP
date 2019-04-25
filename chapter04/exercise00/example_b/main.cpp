@@ -9,16 +9,16 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 00. Страница 099.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 00. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    Скомпилируйте, выполните и протестируйте программы, приведенные в этой главе.
- *    (Пример b. Страница 089)
+ *    РЎРєРѕРјРїРёР»РёСЂСѓР№С‚Рµ, РІС‹РїРѕР»РЅРёС‚Рµ Рё РїСЂРѕС‚РµСЃС‚РёСЂСѓР№С‚Рµ РїСЂРѕРіСЂР°РјРјС‹, РїСЂРёРІРµРґРµРЅРЅС‹Рµ РІ СЌС‚РѕР№ РіР»Р°РІРµ.
+ *    (РџСЂРёРјРµСЂ b. РЎС‚СЂР°РЅРёС†Р° 089)
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -26,125 +26,132 @@
  */
 
 #include <algorithm>
-#include <iostream>
-#include <ios>
 #include <iomanip>
-#include <vector>
-#include <string>
+#include <ios>
+#include <iostream>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 using std::cin;
 using std::cout;
 
-using std::max;
 using std::endl;
-using std::sort;
+using std::max;
 using std::setprecision;
+using std::sort;
 
-using std::vector;
-using std::string;
 using std::domain_error;
 using std::istream;
 using std::streamsize;
+using std::string;
+using std::vector;
 
 struct Student_info
 {
-   string name;
-   double midterm, fin;
-   vector<double> homework;
+    string         name;
+    double         midterm, fin;
+    vector<double> homework;
 };
+
+double   median(vector<double>);
+double   grade(double, double, double);
+double   grade(double, double, const vector<double>&);
+double   grade(const Student_info&);
+istream& read_hw(istream&, vector<double>&);
+istream& read(istream&, Student_info&);
+bool     compare(const Student_info&, const Student_info&);
 
 double median(vector<double> vec)
 {
-   typedef vector<double>::size_type vec_sz;
+    typedef vector<double>::size_type vec_sz;
 
-   vec_sz size = vec.size();
-   if (size == 0)
-      throw domain_error("Медиана пустого вектора.");
+    vec_sz size = vec.size( );
+    if (size == 0)
+        throw domain_error("РњРµРґРёР°РЅР° РїСѓСЃС‚РѕРіРѕ РІРµРєС‚РѕСЂР°.");
 
-   sort(vec.begin(), vec.end());
-   vec_sz mid = size / 2;
+    sort(vec.begin( ), vec.end( ));
+    vec_sz mid = size / 2;
 
-   return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
+    return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
 }
 
 double grade(double midterm, double fin, double homework)
 {
-   return 0.2 * midterm + 0.4 * fin + 0.4 * homework;
+    return 0.2 * midterm + 0.4 * fin + 0.4 * homework;
 }
 
 double grade(double midterm, double fin, const vector<double>& hw)
 {
-   if (hw.size() == 0)
-      throw domain_error("Студент не сделал ни одного домашнего задания ");
-   return grade(midterm, fin, median(hw));
+    if (hw.size( ) == 0)
+        throw domain_error("РЎС‚СѓРґРµРЅС‚ РЅРµ СЃРґРµР»Р°Р» РЅРё РѕРґРЅРѕРіРѕ РґРѕРјР°С€РЅРµРіРѕ Р·Р°РґР°РЅРёСЏ ");
+    return grade(midterm, fin, median(hw));
 }
 
 double grade(const Student_info& s)
 {
-   return grade(s.midterm, s.fin, s.homework);
+    return grade(s.midterm, s.fin, s.homework);
 }
 
 istream& read_hw(istream& in, vector<double>& hw)
 {
-   if (in)
-   {
-      hw.clear();
+    if (in)
+    {
+        hw.clear( );
 
-      double x;
-      while (in >> x)
-         hw.push_back(x);
+        double x;
+        while (in >> x)
+            hw.push_back(x);
 
-      in.clear();
-   }
-   return in;
+        in.clear( );
+    }
+    return in;
 }
 
 istream& read(istream& in, Student_info& s)
 {
-   in >> s.name >> s.midterm >> s.fin;
+    in >> s.name >> s.midterm >> s.fin;
 
-   read_hw(in, s.homework);
+    read_hw(in, s.homework);
 
-   return in;
+    return in;
 }
 
 bool compare(const Student_info& x, const Student_info& y)
 {
-   return x.name < y.name;
+    return x.name < y.name;
 }
 
-int main()
+int main( )
 {
-   vector<Student_info> students;
-   Student_info record;
-   string::size_type maxlen = 0;
+    vector<Student_info> students;
+    Student_info         record;
+    string::size_type    maxlen = 0;
 
-   while (read(cin, record))
-   {
-      maxlen = max(maxlen, record.name.size());
-      students.push_back(record);
-   }
+    while (read(cin, record))
+    {
+        maxlen = max(maxlen, record.name.size( ));
+        students.push_back(record);
+    }
 
-   sort(students.begin(), students.end(), compare);
+    sort(students.begin( ), students.end( ), compare);
 
-   for (vector<Student_info>::size_type i = 0; i != students.size(); ++i)
-   {
-      cout << students[i].name << string(maxlen + 1 - students[i].name.size(), ' ');
+    for (vector<Student_info>::size_type i = 0; i != students.size( ); ++i)
+    {
+        cout << students[i].name << string(maxlen + 1 - students[i].name.size( ), ' ');
 
-      try
-      {
-         double final_grade = grade(students[i]);
-         streamsize prec = cout.precision();
-         cout << setprecision(3) << final_grade << setprecision(prec);
+        try
+        {
+            double     final_grade = grade(students[i]);
+            streamsize prec        = cout.precision( );
+            cout << setprecision(3) << final_grade;
+            cout.precision(prec);
+        }
+        catch (domain_error e)
+        {
+            cout << e.what( );
+        }
 
-      }
-      catch (domain_error e)
-      {
-         cout << e.what();
-      }
-
-      cout << endl;
-   }
-
+        cout << endl;
+    }
 }

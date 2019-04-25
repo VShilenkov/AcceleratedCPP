@@ -11,35 +11,34 @@
  *    @author     VShilenkov
  *    @brief      median of vector of doubles.
  *
- *    @see        
+ *    @see
  */
- 
+
 /**
  *   Version history:
  *
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
 
+#include "median.hpp"
+
 #include <algorithm>
 #include <stdexcept>
 
-#include "median.hpp"
-
+using std::domain_error;
 using std::sort;
 using std::vector;
-using std::domain_error;
 
 double median(vector<double> vec)
 {
-   typedef vector<double>::size_type vec_sz;
+    typedef vector<double>::size_type vec_sz;
 
-   vec_sz size = vec.size();
-   if (size == 0)
-      throw domain_error("Медиана пустого вектора.");
+    vec_sz size = vec.size( );
+    if (size == 0)
+        throw domain_error("РњРµРґРёР°РЅР° РїСѓСЃС‚РѕРіРѕ РІРµРєС‚РѕСЂР°.");
 
-   sort(vec.begin(), vec.end());
-   vec_sz mid = size / 2;
+    sort(vec.begin( ), vec.end( ));
+    vec_sz mid = size / 2;
 
-   return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
+    return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
 }
-
