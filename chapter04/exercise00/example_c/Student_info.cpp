@@ -11,9 +11,9 @@
  *    @author     VShilenkov
  *    @brief      Student information
  *
- *    @see        
+ *    @see
  */
- 
+
 /**
  *   Version history:
  *
@@ -27,29 +27,29 @@ using std::vector;
 
 bool compare(const Student_info& x, const Student_info& y)
 {
-   return x.name < y.name;
+    return x.name < y.name;
 }
 
 istream& read(std::istream& in, Student_info& s)
 {
-   in >> s.name >> s.midterm >> s.fin;
+    in >> s.name >> s.midterm >> s.fin;
 
-   read_hw(in, s.homework);
+    read_hw(in, s.homework);
 
-   return in;
+    return in;
 }
 
 istream& read_hw(std::istream& in, std::vector<double>& hw)
 {
-   if (in)
-   {
-      hw.clear();
+    if (in)
+    {
+        hw.clear( );
 
-      double x;
-      while (in >> x)
-         hw.push_back(x);
+        double x;
+        while (in >> x)
+            hw.push_back(x);
 
-      in.clear();
-   }
-   return in;
+        in.clear( );
+    }
+    return in;
 }
