@@ -9,60 +9,57 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 04. Страница 099.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 04. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    А теперь измените свою программу вычисления квадратов, используя вместо
- *    int-значений значения типа double. Используйте манипуляторы для управления
- *    выводом данных так, чтобы значения были выровнены по столбцам.
+ *    Рђ С‚РµРїРµСЂСЊ РёР·РјРµРЅРёС‚Рµ СЃРІРѕСЋ РїСЂРѕРіСЂР°РјРјСѓ РІС‹С‡РёСЃР»РµРЅРёСЏ РєРІР°РґСЂР°С‚РѕРІ, РёСЃРїРѕР»СЊР·СѓСЏ РІРјРµСЃС‚Рѕ
+ *    int-Р·РЅР°С‡РµРЅРёР№ Р·РЅР°С‡РµРЅРёСЏ С‚РёРїР° double. РСЃРїРѕР»СЊР·СѓР№С‚Рµ РјР°РЅРёРїСѓР»СЏС‚РѕСЂС‹ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ
+ *    РІС‹РІРѕРґРѕРј РґР°РЅРЅС‹С… С‚Р°Рє, С‡С‚РѕР±С‹ Р·РЅР°С‡РµРЅРёСЏ Р±С‹Р»Рё РІС‹СЂРѕРІРЅРµРЅС‹ РїРѕ СЃС‚РѕР»Р±С†Р°Рј.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
 
-#include <iomanip>
+//#include <iomanip>
 #include <iostream>
 #include <string>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::setw;
-using std::setprecision;
-using std::streamsize;
-
-int main()
+int main( )
 {
-   const double up_bound = 1000;
-   streamsize len_number = 0;
+    using std::cout;
+    using std::streamsize;
+    using T = double;
 
-   double t = up_bound;
+    const T    up_bound   = 1000U;
+    streamsize len_number = 0;
 
-   while (t > 1)
-   {
-      t /= 10;
-      len_number++;
-   }
+    for (T t = up_bound; t > 1.; t /= 10.)
+    {
+        ++len_number;
+    }
 
-   streamsize len_square = 2 * len_number;
-   streamsize precision  = cout.precision();
-   streamsize width      = cout.width();
+    streamsize len_square = len_number << 1U;
+    streamsize precision  = cout.precision( );
+    streamsize width      = cout.width( );
 
-   for (double i = 0; i < up_bound; i++)
-   {
-      
-      cout << setprecision(len_number) << setw(len_number) << i << " "
-           << setprecision(len_square) << setw(len_square) << i*i
-           << endl;
-   }
+    for (double i = .0; i < up_bound; i++)
+    {
+        cout.precision(len_number);
+        cout.width(len_number);
+        cout << i << ' ';
+        cout.precision(len_square);
+        cout.width(len_square);
+        cout << i * i << std::endl;
+    }
 
-   cout << setprecision(precision) << setw(width);
+    cout.precision(precision);
+    cout.width(width);
 
-   return 0;
+    return 0;
 }
