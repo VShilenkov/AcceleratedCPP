@@ -9,18 +9,18 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 05. Страница 099.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 05. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    Напишите функцию, которая считывает слова из входного потока и сохраняет их
- *    в векторе. Используйте эту функцию для написания программ, которые подсчи-
- *    тывают количество слов во входном потоке, а также фиксируют, сколько раз
- *    встречается в нем каждое слово.
+ *    РќР°РїРёС€РёС‚Рµ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ СЃС‡РёС‚С‹РІР°РµС‚ СЃР»РѕРІР° РёР· РІС…РѕРґРЅРѕРіРѕ РїРѕС‚РѕРєР° Рё СЃРѕС…СЂР°РЅСЏРµС‚ РёС…
+ *    РІ РІРµРєС‚РѕСЂРµ. РСЃРїРѕР»СЊР·СѓР№С‚Рµ СЌС‚Сѓ С„СѓРЅРєС†РёСЋ РґР»СЏ РЅР°РїРёСЃР°РЅРёСЏ РїСЂРѕРіСЂР°РјРј, РєРѕС‚РѕСЂС‹Рµ РїРѕРґСЃС‡Рё-
+ *    С‚С‹РІР°СЋС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕРІ РІРѕ РІС…РѕРґРЅРѕРј РїРѕС‚РѕРєРµ, Р° С‚Р°РєР¶Рµ С„РёРєСЃРёСЂСѓСЋС‚, СЃРєРѕР»СЊРєРѕ СЂР°Р·
+ *    РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ РЅРµРј РєР°Р¶РґРѕРµ СЃР»РѕРІРѕ.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
@@ -32,62 +32,57 @@
 #include <string>
 #include <vector>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::sort;
-using std::istream;
 using std::string;
 using std::vector;
 
-istream& read(istream& in, vector<string>& vec)
+std::istream& operator>>(std::istream&, vector<string>&);
+
+int main( )
 {
-   if (in)
-   {
-      vec.clear();
+    vector<string> words(16, "");
+    std::cin >> words;
 
-      string word;
-      while (in >> word)
-      {
-         vec.push_back(word);
-      }
+    if (!words.empty( ))
+    {
+        std::sort(words.begin( ), words.end( ));
 
-      in.clear();
-   }
+        typedef vector<string>::const_iterator vec_string_i;
 
-   return in;
+        string word  = *words.cbegin( );
+        size_t count = 0U;
+        for (vec_string_i i = words.cbegin( ); i != words.cend( ); ++i)
+        {
+            if (word != *i)
+            {
+                std::cout << word << '\t' << count << std::endl;
+                word  = *i;
+                count = 1;
+            }
+            else
+            {
+                ++count;
+            }
+        }
+        std::cout << word << '\t' << count << std::endl << "Total words: " << words.size( );
+    }
+
+    return 0;
 }
 
-int main()
+std::istream& operator>>(std::istream& in, vector<string>& vec)
 {
-   vector<string> words;
-   read(cin, words);
+    if (in)
+    {
+        vec.clear( );
 
-   if (words.size() > 0)
-   {
-      sort(words.begin(), words.end());
+        string word;
+        while (in >> word)
+        {
+            vec.push_back(word);
+        }
 
-      typedef vector<string>::iterator vec_string_i;
+        in.clear( );
+    }
 
-      string word = *words.begin();
-      size_t count = 0;
-      for (vec_string_i i = words.begin(); i != words.end(); i++)
-      {
-         if (word != *i)
-         {
-            cout << word << "\t" << count << endl;
-            word = *i;
-            count = 1;
-         }
-         else
-         {
-            count++;
-         }
-      }
-      cout << word << count << endl;
-
-      cout << "Total words: " << words.size() << endl;
-   }
-
-   return 0;
+    return in;
 }
