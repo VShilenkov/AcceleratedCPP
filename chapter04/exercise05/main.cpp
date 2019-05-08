@@ -32,50 +32,35 @@
 #include <string>
 #include <vector>
 
-using std::string;
-using std::vector;
+typedef std::vector<std::string> container_t;
 
-std::istream& operator>>(std::istream&, vector<string>&);
+std::istream& operator>>(std::istream&, container_t&);
 
 int main( )
 {
-    vector<string> words(16, "");
+    container_t words(16, "");
     std::cin >> words;
 
-    if (!words.empty( ))
+    std::sort(words.begin( ), words.end( ));
+
+    for (container_t::const_iterator i = words.cbegin( ), j = std::upper_bound(i, words.cend( ), *i);
+         i != words.cend( );
+         i = j, j = std::upper_bound(i, words.cend( ), *i))
     {
-        std::sort(words.begin( ), words.end( ));
-
-        typedef vector<string>::const_iterator vec_string_i;
-
-        string word  = *words.cbegin( );
-        size_t count = 0U;
-        for (vec_string_i i = words.cbegin( ); i != words.cend( ); ++i)
-        {
-            if (word != *i)
-            {
-                std::cout << word << '\t' << count << std::endl;
-                word  = *i;
-                count = 1;
-            }
-            else
-            {
-                ++count;
-            }
-        }
-        std::cout << word << '\t' << count << std::endl << "Total words: " << words.size( );
+        std::cout << *i << '\t' << std::distance(i, j) << std::endl;
     }
+    std::cout << "Total words: " << words.size( );
 
     return 0;
 }
 
-std::istream& operator>>(std::istream& in, vector<string>& vec)
+std::istream& operator>>(std::istream& in, container_t& vec)
 {
     if (in)
     {
         vec.clear( );
 
-        string word;
+        container_t::value_type word;
         while (in >> word)
         {
             vec.push_back(word);
