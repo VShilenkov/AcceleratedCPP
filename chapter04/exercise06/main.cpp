@@ -9,146 +9,123 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 06. Страница 099.
- *    
- *    Перепишите структуру Student_info для немедленного вычисления оценок и
- *    сохранения значения только итоговой оценки.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 06. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    РџРµСЂРµРїРёС€РёС‚Рµ СЃС‚СЂСѓРєС‚СѓСЂСѓ Student_info РґР»СЏ РЅРµРјРµРґР»РµРЅРЅРѕРіРѕ РІС‹С‡РёСЃР»РµРЅРёСЏ РѕС†РµРЅРѕРє Рё
+ *    СЃРѕС…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ С‚РѕР»СЊРєРѕ РёС‚РѕРіРѕРІРѕР№ РѕС†РµРЅРєРё.
+ *
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
 
-#include <algorithm>
+#include "numeric.hpp"
+
 #include <iostream>
-#include <ios>
-#include <iomanip>
-#include <vector>
-#include <string>
-#include <stdexcept>
 
-using std::cin;
-using std::cout;
+typedef double              mark_t;
+typedef std::vector<mark_t> marks_container_t;
 
-using std::max;
-using std::endl;
-using std::sort;
-using std::setprecision;
-
-using std::vector;
-using std::string;
-using std::domain_error;
-using std::istream;
-using std::streamsize;
+std::istream& operator>>(std::istream&, marks_container_t&);
 
 struct Student_info
 {
-   string name;
-   double final_grade;
+    std::string name;
+    mark_t      final_grade;
 };
 
-double median(vector<double> vec)
+std::istream& operator>>(std::istream&, Student_info&);
+
+inline bool operator<(const Student_info& lhs, const Student_info& rhs)
 {
-   typedef vector<double>::size_type vec_sz;
-
-   vec_sz size = vec.size();
-   if (size == 0)
-      throw domain_error("Медиана пустого вектора.");
-
-   sort(vec.begin(), vec.end());
-   vec_sz mid = size / 2;
-
-   return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
+    return lhs.name < rhs.name;
 }
 
-double grade(double midterm, double fin, double homework)
+inline mark_t median(marks_container_t marks)
 {
-   return 0.2 * midterm + 0.4 * fin + 0.4 * homework;
+    if (marks.empty( ))
+    {
+        throw std::domain_error("РњРµРґРёР°РЅР° РїСѓСЃС‚РѕРіРѕ РІРµРєС‚РѕСЂР°.");
+    }
+
+    return vsh::median(marks.cbegin( ), marks.cend( ), .0);
 }
 
-double grade(double midterm, double fin, const vector<double>& hw)
+inline mark_t grade(const mark_t& midterm, const mark_t& fin, const mark_t& homework)
 {
-   if (hw.size() == 0)
-      throw domain_error("Студент не сделал ни одного домашнего задания ");
-   return grade(midterm, fin, median(hw));
+    return .2 * midterm + .4 * fin + .4 * homework;
 }
 
-double grade(const Student_info& s)
+inline mark_t grade(const mark_t& midterm, const mark_t& fin, const marks_container_t& hw)
 {
-   return s.final_grade;
+    if (hw.empty( ))
+    {
+        throw std::domain_error("РЎС‚СѓРґРµРЅС‚ РЅРµ СЃРґРµР»Р°Р» РЅРё РѕРґРЅРѕРіРѕ РґРѕРјР°С€РЅРµРіРѕ Р·Р°РґР°РЅРёСЏ ");
+    }
+    return grade(midterm, fin, median(hw));
 }
 
-istream& read_hw(istream& in, vector<double>& hw)
+std::istream& operator>>(std::istream& in, marks_container_t& hw)
 {
-   if (in)
-   {
-      hw.clear();
-
-      double x;
-      while (in >> x)
-         hw.push_back(x);
-
-      in.clear();
-   }
-   return in;
+    if (in)
+    {
+        hw.clear( );
+        marks_container_t::value_type x;
+        while (in >> x)
+        {
+            hw.push_back(x);
+        }
+        in.clear( );
+    }
+    return in;
 }
 
-istream& read(istream& in, Student_info& s)
+std::istream& operator>>(std::istream& in, Student_info& s)
 {
-   double midterm, fin;
-   vector<double> homework;
-   in >> s.name >> midterm >> fin;
-
-   read_hw(in, homework);
-   if (in)
-   {
-      s.final_grade = grade(midterm, fin, homework);
-   }
-   return in;
+    mark_t            midterm, fin;
+    marks_container_t homework;
+    in >> s.name >> midterm >> fin >> homework;
+    s.final_grade = (in) ? grade(midterm, fin, homework) : .0;
+    return in;
 }
 
-bool compare(const Student_info& x, const Student_info& y)
+int main( )
 {
-   return x.name < y.name;
-}
+    std::vector<Student_info> students;
+    Student_info              record;
+    std::string::size_type    maxlen = 0;
 
-int main()
-{
-   vector<Student_info> students;
-   Student_info record;
-   string::size_type maxlen = 0;
+    while (std::cin >> record)
+    {
+        maxlen = std::max(maxlen, record.name.size( ));
+        students.push_back(record);
+    }
 
-   while (read(cin, record))
-   {
-      maxlen = max(maxlen, record.name.size());
-      students.push_back(record);
-   }
+    std::sort(students.begin( ), students.end( ));
 
-   sort(students.begin(), students.end(), compare);
+    for (std::vector<Student_info>::iterator student(students.begin( )); student != students.end( ); ++student)
+    {
+        using std::cout;
+        cout << student->name << std::string(maxlen + 1U - student->name.size( ), ' ');
 
-   for (vector<Student_info>::size_type i = 0; i != students.size(); ++i)
-   {
-      cout << students[i].name << string(maxlen + 1 - students[i].name.size(), ' ');
+        try
+        {
+            mark_t          final_grade = student->final_grade;
+            std::streamsize precision   = cout.precision(3);
+            cout << final_grade;
+            cout.precision(precision);
+        }
+        catch (std::domain_error e)
+        {
+            cout << e.what( );
+        }
 
-      try
-      {
-         double final_grade = grade(students[i]);
-         streamsize prec = cout.precision();
-         cout << setprecision(3) << final_grade << setprecision(prec);
-
-      }
-      catch (domain_error e)
-      {
-         cout << e.what();
-      }
-
-      cout << endl;
-   }
-
+        cout << std::endl;
+    }
 }

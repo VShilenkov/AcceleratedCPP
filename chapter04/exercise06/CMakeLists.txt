@@ -1,0 +1,1 @@
+add_executable(c04.e06 main.cpp numeric.hpp)
