@@ -9,60 +9,51 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 04. Упражнение 07. Страница 099.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 04. РЈРїСЂР°Р¶РЅРµРЅРёРµ 07. РЎС‚СЂР°РЅРёС†Р° 099.
  *
- *    Напишите программу вычисления среднего арифметического от чисел, содержа-
- *    щихся в векторе типа vector<double>.
+ *    РќР°РїРёС€РёС‚Рµ РїСЂРѕРіСЂР°РјРјСѓ РІС‹С‡РёСЃР»РµРЅРёСЏ СЃСЂРµРґРЅРµРіРѕ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРіРѕ РѕС‚ С‡РёСЃРµР», СЃРѕРґРµСЂР¶Р°-
+ *    С‰РёС…СЃСЏ РІ РІРµРєС‚РѕСЂРµ С‚РёРїР° vector<double>.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
 
+#include "numeric.hpp"
+
 #include <iostream>
-#include <stdexcept>
-#include <vector>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::domain_error;
-using std::vector;
+typedef std::vector<double> container_t;
 
-double arithmetic_mean(const vector<double>& src)
+std::istream& operator>>(std::istream&, container_t&);
+
+int main( )
 {
-   if (src.size() == 0)
-      throw domain_error("Empty vector");
-   double sum = 0;
-   for (size_t i = 0; i < src.size(); i++)
-   {
-      sum += src[i];
-   }
+    container_t d;
+    std::cin >> d;
 
-   return sum / src.size();
+    std::cout << vsh::arithmetic_mean(d.begin( ), d.end( )) << std::endl;
+
+    return 0;
 }
 
-int main()
+std::istream& operator>>(std::istream& in, container_t& hw)
 {
-   vector<double> d;
-   double number;
-   while (cin >> number)
-      d.push_back(number);
-
-   try
-   {
-      cout << arithmetic_mean(d);
-   }
-   catch (domain_error e)
-   {
-      cout << e.what() << endl;
-   }
-
-   return 0;
+    if (in)
+    {
+        hw.clear( );
+        container_t::value_type x;
+        while (in >> x)
+        {
+            hw.push_back(x);
+        }
+        in.clear( );
+    }
+    return in;
 }
