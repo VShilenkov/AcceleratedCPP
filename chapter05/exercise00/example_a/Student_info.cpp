@@ -11,9 +11,9 @@
  *    @author     VShilenkov
  *    @brief      Student information
  *
- *    @see        
+ *    @see
  */
- 
+
 /**
  *   Version history:
  *
@@ -22,34 +22,32 @@
 
 #include "Student_info.hpp"
 
-using std::istream;
-using std::vector;
+#include <iostream>
 
-bool compare(const Student_info& x, const Student_info& y)
+inline bool operator<(const Student_info& x, const Student_info& y)
 {
-   return x.name < y.name;
+    return x.name < y.name;
 }
 
-istream& read(std::istream& in, Student_info& s)
+std::istream& operator>>(std::istream& in, Student_info& s)
 {
-   in >> s.name >> s.midterm >> s.fin;
-
-   read_hw(in, s.homework);
-
-   return in;
+    in >> s.name >> s.midterm >> s.fin >> s.homework;
+    return in;
 }
 
-istream& read_hw(std::istream& in, std::vector<double>& hw)
+std::istream& operator>>(std::istream& in, mark_cnt_t& hw)
 {
-   if (in)
-   {
-      hw.clear();
+    if (in)
+    {
+        hw.clear( );
 
-      double x;
-      while (in >> x)
-         hw.push_back(x);
+        mark_cnt_t::value_type x;
+        while (in >> x)
+        {
+            hw.push_back(x);
+        }
 
-      in.clear();
-   }
-   return in;
+        in.clear( );
+    }
+    return in;
 }
