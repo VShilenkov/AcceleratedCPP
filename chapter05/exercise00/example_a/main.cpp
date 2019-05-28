@@ -29,23 +29,7 @@
 #include "grade.hpp"
 
 #include <fstream>
-//#include <iomanip>
-//#include <ios>
 #include <iostream>
-//#include <stdexcept>
-//#include <string>
-//#include <vector>
-
-// using std::cin;
-// using std::cout;
-// using std::domain_error;
-// using std::endl;
-// using std::ifstream;
-// using std::max;
-// using std::setprecision;
-// using std::streamsize;
-// using std::string;
-// using std::vector;
 
 inline bool fgrade(const Student_info& s)
 {
