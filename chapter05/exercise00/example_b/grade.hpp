@@ -1,11 +1,10 @@
-#ifndef GUARD_grade_hpp
-#define GUARD_grade_hpp
+#ifndef GUARD_GRADE_HPP
+#define GUARD_GRADE_HPP
 
-#include <vector>
 #include "Student_info.hpp"
 
-double grade(double midterm, double fin, double homework);
-double grade(double midterm, double fin, const std::vector<double>& hw);
-double grade(const Student_info& s);
+mark_t grade(mark_t midterm, mark_t fin, mark_t homework);
+mark_t grade(mark_t midterm, mark_t fin, const mark_cnt_t& hw);
+mark_t grade(const Student_info& s);
 
-#endif // !GUARD_grade_hpp
+#endif    // !GUARD_GRADE_HPP
