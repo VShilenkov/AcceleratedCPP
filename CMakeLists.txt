@@ -1,12 +1,32 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(AcceleratedCPP VERSION 0.1.0)
 
-if (NOT WIN32)
-    set(CMAKE_EXECUTABLE_SUFFIX_CXX ".out" CACHE STRING "" FORCE)
-    set(CMAKE_EXECUTABLE_SUFFIX_C   ".out" CACHE STRING "" FORCE)
+if(WITH_IWYU)
+    find_program(IWYU_EXECUTABLE include-what-you-use REQUIRED)
+    set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "${IWYU_EXECUTABLE}")
 endif()
 
-add_compile_options("-m64")
+if(WITH_CLANG_TIDY)
+    find_program(CLANG_TIDY_EXECUTABLE clang-tidy REQUIRED)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}")
+endif()
+
+if(WITH_CPPCHECK)
+    find_program(CPPCHECK_EXECUTABLE cppcheck REQUIRED)
+    set(CMAKE_CXX_CPPCHECK "${CPPCHECK_EXECUTABLE};--std=c++11")
+endif()
+
+if(WITH_CPPLINT)
+    find_program(CPPLINT_EXECUTABLE cpplint REQUIRED)
+    set(CMAKE_CXX_CPPLINT "${CPPLINT_EXECUTABLE};--linelength=79")
+endif()
+
+if(WITH_LWYU)
+    set(CMAKE_LINK_WHAT_YOU_USE true)
+endif()
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_subdirectory(chapter00)
 add_subdirectory(chapter01)

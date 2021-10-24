@@ -20,6 +20,8 @@
  *   2014-12-29   0.1.0   VShilenkov   Initial
  */
 
+#include <stdexcept>
+
 #include "median.hpp"
 #include "numeric.hpp"
 

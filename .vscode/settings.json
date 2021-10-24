@@ -1,70 +1,28 @@
 {
-    "C_Cpp.loggingLevel": "Information",
+    "cmake.cmakePath"     : "${workspaceFolder}/.vscode/cmake_${command:cmake.buildKit}",
+    "cmake.buildDirectory": "${workspaceFolder}/build_${buildKit}/${buildType}",
 
-    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
-    "C_Cpp.default.compileCommands": "${config:cmake.copyCompileCommands}",
-    "C_Cpp.default.cStandard": "c11",
-    "C_Cpp.default.cppStandard": "c++14",
+    "cmake.configureArgs": [
+//        "--debug-find"
+    ],
+    "cmake.configureSettings": {
+        "CMAKE_VERBOSE_MAKEFILE": "false",
+        "ENGINEERING_BUILD"     : "false",
+        "WITH_UNIT_TEST"        : "false",
+        "WITH_COVERAGE"         : "false",
+        "WITH_IWYU"             : "false",
+        "WITH_CLANG_TIDY"       : "false",
+        "WITH_CPPCHECK"         : "false"
+    },
 
-    "cmake.loggingLevel"    : "info",
-    "cmake.configureOnOpen" : true,
-    
-    "cmake.buildDirectory"      : "${workspaceFolder}/build/${buildKit}/${buildType}",
-    "cmake.copyCompileCommands" : "${workspaceFolder}/build/compile_commands.json",
-    "cmake.mingwSearchDirs"     : ["c:/msys64/mingw64"],
-    
-    "editor.emptySelectionClipboard": false,
-    "editor.mouseWheelZoom"         : true,
-    "editor.renderWhitespace"       : "all",
-    "editor.rulers"                 : [80, 120, 160],
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
 
-    "explorer.sortOrder": "type",
-
-    "files.autoGuessEncoding": true,
-
-    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
-    "files.associations": {
-        "iostream": "cpp",
-        "chrono": "cpp",
-        "ratio": "cpp",
-        "*.tcc": "cpp",
-        "cctype": "cpp",
-        "clocale": "cpp",
-        "cstdint": "cpp",
-        "cstdio": "cpp",
-        "cstdlib": "cpp",
-        "ctime": "cpp",
-        "cwchar": "cpp",
-        "cwctype": "cpp",
-        "exception": "cpp",
-        "initializer_list": "cpp",
-        "iosfwd": "cpp",
-        "istream": "cpp",
-        "limits": "cpp",
-        "new": "cpp",
-        "ostream": "cpp",
-        "stdexcept": "cpp",
-        "streambuf": "cpp",
-        "system_error": "cpp",
-        "type_traits": "cpp",
-        "typeinfo": "cpp",
-        "utility": "cpp",
-        "cmath": "cpp",
-        "cstddef": "cpp",
-        "cstring": "cpp",
-        "ios": "cpp",
-        "xfacet": "cpp",
-        "xiosbase": "cpp",
-        "xlocale": "cpp",
-        "xlocinfo": "cpp",
-        "xlocnum": "cpp",
-        "xmemory0": "cpp",
-        "xstddef": "cpp",
-        "xstring": "cpp",
-        "xtr1common": "cpp",
-        "xutility": "cpp",
-        "iomanip": "cpp",
-        "vector": "cpp"
-    }
-
+    "cmake.enabledOutputParsers": [
+        "cmake",
+        "gcc",
+        "gnuld",
+//        "msvc",
+//        "ghs",
+//        "diab"
+    ],
 }

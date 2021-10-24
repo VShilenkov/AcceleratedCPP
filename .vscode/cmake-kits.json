@@ -1,10 +1,62 @@
 [
-  {
-    "name": "Toolchain_GCC",
-    "toolchainFile": "${workspaceFolder}/.cmake/toolchain/gcc_toolchain.cmake"
-  },
-  {
-    "name": "Toolchain_Clang",
-    "toolchainFile": "${workspaceFolder}/.cmake/toolchain/clang_toolchain.cmake"
-  }
+    {
+        "name": "vsh.x86_64-linux-gnu-gcc-7",
+        "compilers": {
+            "C": "x86_64-linux-gnu-gcc-7",
+            "CXX": "x86_64-linux-gnu-g++-7"
+        },
+        "cmakeSettings": {
+            "CMAKE_INSTALL_PREFIX": "$HOME/Hearth/install_root"
+        },
+        "environmentVariables": {
+        }
+    },
+    {
+        "name": "vsh.x86_64-linux-gnu-gcc-8",
+        "compilers": {
+            "C": "x86_64-linux-gnu-gcc-8",
+            "CXX": "x86_64-linux-gnu-g++-8"
+        },
+        "cmakeSettings": {
+            "CMAKE_INSTALL_PREFIX": "$HOME/Hearth/install_root"
+        },
+        "environmentVariables": {
+        }
+    },
+    {
+        "name": "vsh.x86_64-linux-gnu-gcc-9",
+        "compilers": {
+            "C": "x86_64-linux-gnu-gcc-9",
+            "CXX": "x86_64-linux-gnu-g++-9"
+        },
+        "cmakeSettings": {
+            "CMAKE_INSTALL_PREFIX": "$HOME/Hearth/install_root"
+        },
+        "environmentVariables": {
+        }
+    },
+    {
+        "name": "vsh.x86_64-linux-gnu-gcc-10",
+        "compilers": {
+            "C": "x86_64-linux-gnu-gcc-10",
+            "CXX": "x86_64-linux-gnu-g++-10"
+        },
+        "cmakeSettings": {
+            "CMAKE_INSTALL_PREFIX": "$HOME/Hearth/install_root"
+        },
+        "environmentVariables": {
+        }
+    },
+    {
+        "name": "vsh.x86_64-linux-gnu-gcc-11",
+        "compilers": {
+            "C": "x86_64-linux-gnu-gcc-11",
+            "CXX": "x86_64-linux-gnu-g++-11"
+        },
+        "cmakeSettings": {
+            "CMAKE_INSTALL_PREFIX": "$HOME/Hearth/install_root"
+        },
+        "environmentVariables": {
+        }
+    }
 ]

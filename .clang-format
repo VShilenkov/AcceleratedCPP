@@ -6,28 +6,27 @@ ColumnLimit:     120
 
 # -------------------------------------------------------------------- Indention
 IndentWidth:                        4
-AccessModifierOffset:               -4
-ConstructorInitializerIndentWidth:  4
 ContinuationIndentWidth:            4
 IndentCaseLabels:                   false
 IndentPPDirectives:                 AfterHash
 IndentWrappedFunctionNames:         false
+AccessModifierOffset:               -4
+ConstructorInitializerIndentWidth:  4
 NamespaceIndentation:               None
 
 # -------------------------------------------------------------------- Alignment
 AlignAfterOpenBracket:          Align
 AlignConsecutiveAssignments:    true
 AlignConsecutiveDeclarations:   true
-AlignEscapedNewlines:           Right
+AlignEscapedNewlines:           Left
 AlignOperands:                  true
 AlignTrailingComments:          true
 
 # -------------------------------------------------- Short instructions per line
-AllowShortBlocksOnASingleLine:          false
-AllowShortCaseLabelsOnASingleLine:      false
-AllowShortFunctionsOnASingleLine:       Inline
-AllowShortIfStatementsOnASingleLine:    false
-AllowShortLoopsOnASingleLine:           false
+AllowShortBlocksOnASingleLine:      false
+AllowShortCaseLabelsOnASingleLine:  false
+AllowShortFunctionsOnASingleLine:   Inline
+AllowShortLoopsOnASingleLine:       false
 
 # ------------------------------------------------------------------ Bin Packing
 BinPackArguments:                   false
@@ -35,44 +34,44 @@ BinPackParameters:                  false
 ExperimentalAutoDetectBinPacking:   false
 
 # ----------------------------------------------------------------------- Breaks
-AlwaysBreakAfterReturnType:             None
-AlwaysBreakBeforeMultilineStrings:      false
-AlwaysBreakTemplateDeclarations:        Yes
+AlwaysBreakAfterReturnType:         None
+AlwaysBreakBeforeMultilineStrings:  false
+AlwaysBreakTemplateDeclarations:    Yes
 
 BreakBeforeBraces:          Custom
 BraceWrapping:
-  AfterClass:               true
   AfterControlStatement:    true
   AfterEnum:                true
   AfterFunction:            true
-  AfterNamespace:           false
-  # AfterObjCDeclaration:     false
   AfterStruct:              true
   AfterUnion:               true
   AfterExternBlock:         false
-  BeforeCatch:              true
   BeforeElse:               true
   IndentBraces:             false
   SplitEmptyFunction:       false
   SplitEmptyRecord:         false
+  AfterClass:               true
+  AfterNamespace:           false
+  AfterObjCDeclaration:     false
+  BeforeCatch:              true
   SplitEmptyNamespace:      false
 
-BreakAfterJavaFieldAnnotations:             false
 BreakBeforeBinaryOperators:                 NonAssignment
-BreakBeforeInheritanceComma:                true
 BreakBeforeTernaryOperators:                true
-BreakConstructorInitializers:               BeforeComma
-# BreakConstructorInitializersBeforeComma:    true
-BreakInheritanceList:                       BeforeComma
 BreakStringLiterals:                        true
+BreakConstructorInitializers:               BeforeComma
+BreakConstructorInitializersBeforeComma:    true
+BreakBeforeInheritanceComma:                true
+BreakInheritanceList:                       BeforeComma
+BreakAfterJavaFieldAnnotations:             false
 
 # ----------------------------------------------------------- Namespace settings
 CompactNamespaces:      false
 FixNamespaceComments:   true
 
 # --------------------------------------------------------------------- Pointers
+PointerAlignment:       Right
 DerivePointerAlignment: false
-PointerAlignment:       Left
 
 # --------------------------------------------------------------- Macro settings
 ForEachMacros:
@@ -91,19 +90,40 @@ IncludeBlocks:      Regroup
 IncludeIsMainRegex: '$'
 
 IncludeCategories: 
-  - Regex:      '^<[_A-Za-z0-9]*?>$'
-  - Priority:   1
-  - Regex:      '^<[_A-Za-z0-9]*?\.h>$'
-  - Priority:   2
+  - Regex:      '<[-_a-zA-Z0-9]+>'
+    Priority:   10
+  - Regex:      '^<[-_a-zA-Z0-9/]+>'
+    Priority:   11
+
+  - Regex:      '^<[-_a-zA-Z0-9]+\.h>'
+    Priority:   20
+  - Regex:      '^<[-_a-zA-Z0-9/]+\.h>'
+    Priority:   21
+
+  - Regex:      '^<[-_a-zA-Z0-9]+\.hpp>'
+    Priority:   30
+  - Regex:      '^<[-_a-zA-Z0-9/]+\.hpp>'
+    Priority:   31
+
+  - Regex:      '^"[-_a-zA-Z0-9]+\.h"'
+    Priority:   40
+  - Regex:      '^"[-_a-zA-Z0-9/]+\.h"'
+    Priority:   41
+
+  - Regex:      '^"[-_a-zA-Z0-9]+\.hpp"'
+    Priority:   50
+  - Regex:      '^"[-_a-zA-Z0-9/]+\.hpp"'
+    Priority:   51
+
   - Regex:      '.*'
-  - Priority:   10
+    Priority:   100
 #  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
 #    Priority:        2
 #  - Regex:           '^(<|"(gtest|gmock|isl|json)/)'
 #    Priority:        3
 
 # ------------------------------------------------------------------ Empty lines
-KeepEmptyLinesAtTheStartOfBlocks:   true
+KeepEmptyLinesAtTheStartOfBlocks:   false
 MaxEmptyLinesToKeep:                1
 
 # -------------------------------------------------------------------- Penalties
@@ -118,18 +138,18 @@ PenaltyReturnTypeOnItsOwnLine:          80
 
 # ----------------------------------------------------------------------- Spaces
 SpaceAfterCStyleCast:               false
+SpaceBeforeParens:                  ControlStatements
+SpacesInCStyleCastParentheses:      false
 SpaceAfterTemplateKeyword:          false
 SpaceBeforeAssignmentOperators:     true
 SpaceBeforeCpp11BracedList:         false
 SpaceBeforeCtorInitializerColon:    true
 SpaceBeforeInheritanceColon:        true
-SpaceBeforeParens:                  ControlStatements
 SpaceBeforeRangeBasedForLoopColon:  true
 SpaceInEmptyParentheses:            true
 SpacesBeforeTrailingComments:       4
 SpacesInAngles:                     false
 SpacesInContainerLiterals:          false
-SpacesInCStyleCastParentheses:      false
 SpacesInParentheses:                false
 SpacesInSquareBrackets:             false
 
