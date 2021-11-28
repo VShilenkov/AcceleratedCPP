@@ -45,7 +45,6 @@
         }
     },
     "tasks": [
-        // ----------------------------------------------------------------- Aux
         {
             "label": "shell.list.env",
             "windows": {
@@ -55,11 +54,10 @@
                 ]
             },
             "linux": {
-                "command": "printenv",
+                "command": "printenv"
             },
             "problemMatcher": []
-        }, // shell.list.env
-        // ---------------------------------------------------------- Generation
+        },
         {
             "label": "cmake.generate",
             "command": "cmake",
@@ -71,8 +69,7 @@
                 "-S\"${fileDirname}/\""
             ],
             "problemMatcher": []
-        }, // cmake.generate
-        // --------------------------------------------------------------- Build
+        },
         {
             "label": "cmake.build",
             "dependsOn": "cmake.generate",
@@ -104,8 +101,7 @@
                     }
                 ]
             }
-        }, // cmake.build
-        // ---------------------------------------------------------- Preprocess
+        },
         {
             "label": "cmake.preprocess",
             "dependsOn": "cmake.generate",
@@ -139,8 +135,7 @@
                     }
                 ]
             }
-        }, // cmake.preprocess
-        // ------------------------------------------------------------ Assembly
+        },
         {
             "label": "cmake.assembly",
             "dependsOn": "cmake.generate",
@@ -174,8 +169,7 @@
                     }
                 ]
             }
-        }, // cmake.assembly
-        // --------------------------------------------------------------- Clean
+        },
         {
             "label": "cmake.clean",
             "command": "cmake",
@@ -186,27 +180,26 @@
                 "clean"
             ],
             "problemMatcher": []
-        }, // cmake.clean
+        },
         {
             "label": "shell.clean.all",
             "command": "rm",
             "windows": {
                 "args": [
                     "-recurse",
-                    ".\\build",
+                    "${command:cmake.buildDirectory}",
                     "-ErrorAction",
                     "SilentlyContinue"
-                ],
+                ]
             },
             "linux": {
                 "args": [
                     "-rf",
-                    "./build/"
+                    "${command:cmake.buildDirectory}"
                 ]
             },
             "problemMatcher": []
-        }, // shell.clean.all
-        // -------------------------------------------------------------- Rebuid
+        },
         {
             "label": "cmake.rebuild",
             "dependsOn": [
@@ -214,14 +207,14 @@
                 "cmake.build"
             ],
             "problemMatcher": []
-        }, // cmake.rebuild
+        },
         {
             "label": "shell.echo.var",
-            "command" : "echo",
+            "command": "echo",
             "args": [
                 "${command:cmake.launchTargetPath}"
             ],
-            "problemMatcher":[]
+            "problemMatcher": []
         }
     ],
     "inputs": [

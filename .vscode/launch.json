@@ -7,11 +7,11 @@
             "program": "${command:cmake.launchTargetPath}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
+            "cwd": "${command:cmake.launchTargetDirectory}",
             "environment": [],
             "externalConsole": false
         },
-        {
+/*        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
@@ -54,6 +54,6 @@
                     "text": "settings set target.input-path ${command:cmake.launchTargetPath}"
                 }
             ]
-        }
+        }*/
     ]
 }

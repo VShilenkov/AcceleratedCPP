@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.12.0)
 project(AcceleratedCPP VERSION 0.1.0)
 
 if(WITH_IWYU)
@@ -27,6 +27,8 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
+add_subdirectory(inc)
 
 add_subdirectory(chapter00)
 add_subdirectory(chapter01)
