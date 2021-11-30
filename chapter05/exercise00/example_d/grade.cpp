@@ -37,7 +37,7 @@ double grade(double midterm, double fin, double homework)
 double grade(double midterm, double fin, const vector<double>& hw)
 {
    if (hw.size() == 0)
-      throw domain_error("Студент не сделал ни одного домашнего задания ");
+      throw domain_error("РЎС‚СѓРґРµРЅС‚ РЅРµ СЃРґРµР»Р°Р» РЅРё РѕРґРЅРѕРіРѕ РґРѕРјР°С€РЅРµРіРѕ Р·Р°РґР°РЅРёСЏ");
    return grade(midterm, fin, median(hw));
 }
 
