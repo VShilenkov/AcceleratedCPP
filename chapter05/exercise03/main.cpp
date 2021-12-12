@@ -9,15 +9,15 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 05. Упражнение 03. Страница 127.
+ *    @brief      РџР°СЂР°РіСЂР°С„ 05. РЈРїСЂР°Р¶РЅРµРЅРёРµ 03. РЎС‚СЂР°РЅРёС†Р° 127.
  *    
- *    Используя средство typedef, можно написать одну версию программы, которая
- *    реализует либо vector-, либо list-ориентированное решение. Напишите и про-
- *    тестируйте эту версию программы.
+ *    РСЃРїРѕР»СЊР·СѓСЏ СЃСЂРµРґСЃС‚РІРѕ typedef, РјРѕР¶РЅРѕ РЅР°РїРёСЃР°С‚СЊ РѕРґРЅСѓ РІРµСЂСЃРёСЋ РїСЂРѕРіСЂР°РјРјС‹, РєРѕС‚РѕСЂР°СЏ
+ *    СЂРµР°Р»РёР·СѓРµС‚ Р»РёР±Рѕ vector-, Р»РёР±Рѕ list-РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅРѕРµ СЂРµС€РµРЅРёРµ. РќР°РїРёС€РёС‚Рµ Рё РїСЂРѕ-
+ *    РїСЂРѕС‚РµСЃС‚РёСЂСѓР№С‚Рµ СЌС‚Сѓ РІРµСЂСЃРёСЋ РїСЂРѕРіСЂР°РјРјС‹.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
  
 /**
@@ -26,9 +26,8 @@
  *   2015-01-28   0.1.0   VShilenkov   Initial
  */
 
-#include <fstream>
+#include <fstream>   // IWYU pragma: keep 
 #include <iomanip>
-#include <ios>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -37,6 +36,8 @@
 #include <ctime>
 #include "grade.hpp"
 #include "Student_info.hpp"
+
+// IWYU pragma: no_include <algorithm>
 
 using std::cin;
 using std::cout;
@@ -52,7 +53,11 @@ using std::vector;
 using std::clock_t;
 using std::clock;
 
+#ifdef USE_LIST
 typedef list<Student_info> students_container;
+#else
+typedef vector<Student_info> students_container;
+#endif
 
 bool fgrade(const Student_info& s)
 {
