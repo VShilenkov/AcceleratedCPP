@@ -26,9 +26,8 @@
  *   2016-04-19   0.1.0   VShilenkov   Initial
  */
  
- #include <fstream>
+ #include <fstream>         // IWYU pragma: keep 
  #include <iostream>
- #include <cctype>
  #include <string>
  #include <vector>
   
