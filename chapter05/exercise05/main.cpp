@@ -9,86 +9,92 @@
 /**
  *    @file       main.cpp
  *    @author     VShilenkov
- *    @brief      Параграф 05. Упражнение 05. Страница 127.
- *    
- *    Напишите функцию center(const vector<string>&), возвращающую картин-
- *    ку, в которой все строки картинки дополняются пробелами до макси-
- *    мальной длины, а это дополнение пробелами по возможности поровну делится
- *	  между левой и правой сторонами картинки. Каковы свойства картинок, для ко-
- *	  торых будет полезной такая функция? Как узнать, обладает ли данная картинка
- *	  такими свойствами?
+ *    @brief      РџР°СЂР°РіСЂР°С„ 05. РЈРїСЂР°Р¶РЅРµРЅРёРµ 05. РЎС‚СЂР°РЅРёС†Р° 127.
  *
- *    @see        Эффективное программирование на C++.
- *    @see        Практическое программирование на примерах.
- *    @see        Эндрю Кёниг, Барбара Му. 2002.
+ *    РќР°РїРёС€РёС‚Рµ С„СѓРЅРєС†РёСЋ center(const vector<string>&), РІРѕР·РІСЂР°С‰Р°СЋС‰СѓСЋ РєР°СЂС‚РёРЅ-
+ *    РєР°СЂС‚РёРЅРєСѓ, РІ РєРѕС‚РѕСЂРѕР№ РІСЃРµ СЃС‚СЂРѕРєРё РёСЃС…РѕРґРЅРѕР№ РєР°СЂС‚РёРЅРєРё РґРѕРїРѕР»РЅСЏСЋС‚СЃСЏ РїСЂРѕР±РµР»Р°РјРё РґРѕ РјР°РєСЃРё-
+ *    РјР°Р»СЊРЅРѕР№ РґР»РёРЅС‹, Р° СЌС‚Рѕ РґРѕРїРѕР»РЅРµРЅРёРµ РїСЂРѕР±РµР»Р°РјРё РїРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРѕСЂРѕРІРЅСѓ РґРµР»РёС‚СЃСЏ
+ *    РјРµР¶РґСѓ Р»РµРІРѕР№ Рё РїСЂР°РІРѕР№ СЃС‚РѕСЂРѕРЅР°РјРё РєР°СЂС‚РёРЅРєРё. РљР°РєРѕРІС‹ СЃРІРѕР№СЃС‚РІР° РєР°СЂС‚РёРЅРѕРє, РґР»СЏ РєРѕ-
+ *    РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ РїРѕР»РµР·РЅРѕР№ С‚Р°РєР°СЏ С„СѓРЅРєС†РёСЏ? РљР°Рє СѓР·РЅР°С‚СЊ, РѕР±Р»Р°РґР°РµС‚ Р»Рё РґР°РЅРЅР°СЏ РєР°СЂС‚РёРЅРєР°
+ *    С‚Р°РєРёРјРё СЃРІРѕР№СЃС‚РІР°РјРё?
+ *
+ *    @see        Р­С„С„РµРєС‚РёРІРЅРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° C++.
+ *    @see        РџСЂР°РєС‚РёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РїСЂРёРјРµСЂР°С….
+ *    @see        Р­РЅРґСЂСЋ РљС‘РЅРёРі, Р‘Р°СЂР±Р°СЂР° РњСѓ. 2002.
  */
- 
+
 /**
  *   Version history:
  *
  *   2016-02-08   0.1.0   VShilenkov   Initial
  */
 
- #include <vector>
- #include <string>
- #include <fstream>
- #include <iostream>
+#include <algorithm>
+#include <codecvt>
+#include <fstream>    // IWYU pragma: keep
+#include <iostream>
+#include <locale>
+#include <string>
+#include <vector>
 
- using std::vector;
- using std::string;
- using std::max;
- using std::ifstream;
- using std::cin;
- using std::cout;
- using std::endl;
- using std::getline;
+// IWYU pragma: no_include <memory>
 
-string::size_type width(const vector<string>& v)
+template<typename T>
+typename T::size_type width(const std::vector<T> &v)
 {
-	string::size_type maxlen = 0;
-	for (vector<string>::size_type i=0; i != v.size(); ++i)
-	{
-		maxlen = max(maxlen, v[i].size());
-	}
+    typename std::vector<T>::const_iterator r =
+        std::max_element(v.cbegin( ), v.cend( ), [](const T &l, const T &r) -> bool { return l.size( ) < r.size( ); });
 
-	return maxlen;
+    return (r == v.cend( )) ? typename T::size_type( ) : r->size( );
 }
 
-vector<string> center (const vector<string>& v)
+std::vector<std::string> center(const std::vector<std::string> &v)
 {
-	vector<string> result;
-	string::size_type max_width=width(v);
+    std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> utf16conv;
+    std::vector<std::u16string>                                       u16text;
+    u16text.reserve(v.size( ));
 
-	cout << max_width << endl;
+    for (const std::string &s : v)
+    {
+        u16text.push_back(utf16conv.from_bytes(s));
+    }
 
-	for (vector<string>::size_type i=0; i!=v.size(); ++i)
-	{
-		string::size_type tabs_width = max_width - v[i].size();
-		string left_tab((tabs_width+1)/2, ' ');
-		string right_tab(tabs_width/2, ' ');
-		result.push_back(left_tab + v[i] + right_tab);
-	}
+    const std::u16string::size_type max_width = width(u16text);
 
-	return result;
+    for (std::vector<std::u16string>::iterator i = u16text.begin( ); i != u16text.end( ); ++i)
+    {
+        std::u16string left_tab((max_width - i->size( ) + 1U) >> 1U, u' ');
+        *i = left_tab + *i;
+    }
+
+    std::vector<std::string> result;
+    result.reserve(u16text.size( ));
+
+    for (const std::u16string &s : u16text)
+    {
+        result.push_back(utf16conv.to_bytes(s));
+    }
+
+    return result;
 }
 
-int main()
+int main( )
 {
-	ifstream in("input.txt");
-	string s;
-	vector<string> text, centered;
+    std::ifstream            in(INPUT_FILE);
+    std::string              s;
+    std::vector<std::string> text, centered;
 
-	while (getline(in,s))
-	{
-		text.push_back(s);
-	}
+    while (std::getline(in, s))
+    {
+        text.push_back(s);
+    }
 
-	centered = center(text);
+    centered = center(text);
 
-	for (vector<string>::size_type i=0; i!=centered.size(); ++i)
-	{
-		cout << centered[i] << endl;
-	}
+    for (const std::string &s : centered)
+    {
+        std::cout << s << std::endl;
+    }
 
-	return 0;
+    return 0;
 }
