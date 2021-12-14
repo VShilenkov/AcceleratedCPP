@@ -2,7 +2,7 @@
 #define GUARD_grade_hpp
 
 #include <vector>
-#include "Student_info.hpp"
+class Student_info;
 
 double grade(double midterm, double fin, double homework);
 double grade(double midterm, double fin, const std::vector<double>& hw);
