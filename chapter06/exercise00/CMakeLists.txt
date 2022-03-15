@@ -1,0 +1,8 @@
+add_subdirectory(example_a)
+#add_subdirectory(example_b)
+#add_subdirectory(example_c)
+#add_subdirectory(example_d)
+#add_subdirectory(example_e)
+#add_subdirectory(example_f)
+#add_subdirectory(example_g)
+#add_subdirectory(example_h)

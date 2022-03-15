@@ -1,6 +1,8 @@
 {
-    "cmake.cmakePath"     : "${workspaceFolder}/.vscode/cmake_${command:cmake.buildKit}",
-    "cmake.buildDirectory": "${workspaceFolder}/build_${buildKit}/${buildType}",
+    //"cmake.cmakePath"     : "${workspaceFolder}/.vscode/cmake_${command:cmake.buildKit}",
+    //"cmake.buildDirectory": "${workspaceFolder}/build_${buildKit}/${buildType}",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 
     "cmake.configureArgs": [
 //        "--debug-find"
@@ -25,4 +27,5 @@
 //        "ghs",
 //        "diab"
     ],
+    "cSpell.language": "en,ru"
 }
