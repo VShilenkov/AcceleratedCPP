@@ -27,5 +27,9 @@
 //        "ghs",
 //        "diab"
     ],
-    "cSpell.language": "en,ru"
+    "cSpell.language": "en,ru",
+    "files.associations": {
+        "algorithm": "cpp",
+        "iomanip": "cpp"
+    }
 }
