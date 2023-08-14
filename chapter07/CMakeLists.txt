@@ -1,0 +1,8 @@
+add_subdirectory(exercise00)
+#add_subdirectory(exercise01)
+#add_subdirectory(exercise03)
+#add_subdirectory(exercise04)
+#add_subdirectory(exercise06)
+#add_subdirectory(exercise07)
+#add_subdirectory(exercise08)
+#add_subdirectory(exercise09)
