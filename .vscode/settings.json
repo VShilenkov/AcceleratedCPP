@@ -30,6 +30,12 @@
     "cSpell.language": "en,ru",
     "files.associations": {
         "algorithm": "cpp",
-        "iomanip": "cpp"
-    }
+        "iomanip": "cpp",
+        "cstdlib": "cpp"
+    },
+    "clang-tidy.executable": "clang-tidy-15",
+    "clang-tidy.buildPath": "build",
+    "cSpell.words": [
+        "Кёниг"
+    ]
 }
