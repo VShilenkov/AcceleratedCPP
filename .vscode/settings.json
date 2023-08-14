@@ -31,7 +31,8 @@
     "files.associations": {
         "algorithm": "cpp",
         "iomanip": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "iosfwd": "cpp"
     },
     "clang-tidy.executable": "clang-tidy-15",
     "clang-tidy.buildPath": "build",
