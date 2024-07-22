@@ -38,5 +38,8 @@
     "clang-tidy.buildPath": "build",
     "cSpell.words": [
         "Кёниг"
-    ]
+    ],
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
+    "C_Cpp.codeAnalysis.clangTidy.path": "clang-tidy-15"
 }

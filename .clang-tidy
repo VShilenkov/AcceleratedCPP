@@ -1,5 +1,14 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*'
+Checks:          |
+                  *
+                  -altera-id-dependent-backward-branch
+                  -altera-unroll-loops
+                  -llvmlibc-implementation-in-namespace
+                  -llvmlibc-restrict-system-libc-headers
+                  -modernize-use-trailing-return-type
+                  -llvmlibc-callee-namespace
+                  -fuchsia-default-arguments-declarations
+                  -fuchsia-default-arguments-calls
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
